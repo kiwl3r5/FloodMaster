@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - LockCam
+  - Halo
+  - GameManager
+  - PauseUI
+  - manhole
+  - water
+  - Enemy
+  - Bullet
+  - DesTrash
+  - Collectable
+  - ground
+  - manholeRad
+  - FxTemporaire
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Manhole
+  - Water
+  - UI
+  - Player
+  - Ground
+  - Trash
+  - Interactable
+  - WaterSFX
+  - PostProcessing
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
