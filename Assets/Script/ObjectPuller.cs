@@ -10,15 +10,39 @@ public class ObjectPuller : MonoBehaviour
     public LayerMask whatIsManhole;
     [SerializeField] private float pullRange = 4;
     [SerializeField] private float pullForce = 3;
-    public bool manholeInRange;
+    //public bool manholeInRange;
     
     //public CollectiblesObj collectiblesObj;
     public ManholeManager manholeManager;
     //public Vector3 manholePosition;
 
-    public List<GameObject> attractedTo;
+    //public List<GameObject> attractedTo;
+    
+    private readonly Collider[] _ManholeColliders = new Collider[3];
+    public int numFound;
 
-    private void Start()
+    private void FixedUpdate()
+    {
+        numFound = Physics.OverlapSphereNonAlloc(transform.position, pullRange, _ManholeColliders,
+            whatIsManhole);
+            
+        if (numFound>0)
+        {
+            manholeManager = _ManholeColliders[0].GetComponent<ManholeManager>();
+            var direction = manholeManager.transform.position - transform.position;
+
+            if (manholeManager != null)
+            {
+                if (!manholeManager.isFull) gameObject.GetComponent<Rigidbody>().AddForce (pullForce * direction);
+            }
+        }
+        else
+        {
+            if (manholeManager != null) manholeManager = null;
+        }
+    }
+
+    /*private void Start()
     {
         //collectiblesObj = GetComponent<CollectiblesObj>();
         var objects = GameObject.FindGameObjectsWithTag("manhole");
@@ -28,9 +52,10 @@ public class ObjectPuller : MonoBehaviour
             attractedTo.Add(obj);
         }
         manholeManager = attractedTo[0].GetComponent<ManholeManager>();
-    }
+    }*/
+    
 
-    private void FixedUpdate ()
+    /*private void FixedUpdate ()
     {
         manholeInRange = Physics.CheckSphere(transform.position, pullRange, whatIsManhole);
         attractedTo = attractedTo.OrderBy(
@@ -44,7 +69,7 @@ public class ObjectPuller : MonoBehaviour
         Vector3 direction = attractedTo[0].transform.position - transform.position;
         gameObject.GetComponent<Rigidbody>().AddForce (pullForce * direction);
          
-    }
+    }*/
 
     private void OnDrawGizmosSelected()
     {

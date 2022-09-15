@@ -4,16 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb1edc33-db92-4ff5-a6b9-9bffbaf053c5" name="Changes" comment="" />
+    <list default="true" id="fb1edc33-db92-4ff5-a6b9-9bffbaf053c5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FloodMaster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FloodMaster/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3DModels/Player/Player.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3DModels/Player/Player.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Trash.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Trash.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/test01.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/test01.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/GameSystems/CollectiblesObj.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/GameSystems/CollectiblesObj.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/GameSystems/FloodSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/GameSystems/FloodSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Manager/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/ManholeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/ManholeManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/ObjectPuller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/ObjectPuller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Player/AnimatorManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Player/AnimatorManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Player/InteractionPromptUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Player/InteractionPromptUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Player/Interactor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Player/Interactor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Player/PlayerLocomotion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Player/PlayerLocomotion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Player/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Player/PlayerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/lockXY.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/lockXY.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water For URP/Materials/Flood.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water For URP/Materials/Flood.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.7/Runtime/UniversalRenderPipeline.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -33,7 +59,11 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="rider.run.widget.enabled.cache" value="false" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="ReaderModeSettings">
+    <option name="showLigatures" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -46,10 +76,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="10168">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="10168" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -69,6 +99,14 @@
       <workItem from="1662583442705" duration="22112000" />
       <workItem from="1662668262628" duration="79893000" />
       <workItem from="1662947521067" duration="32988000" />
+      <workItem from="1663063125067" duration="674000" />
+      <workItem from="1663063853623" duration="2313000" />
+      <workItem from="1663079161735" duration="5120000" />
+      <workItem from="1663108096929" duration="11562000" />
+      <workItem from="1663142796916" duration="292000" />
+      <workItem from="1663143126094" duration="78000" />
+      <workItem from="1663143267879" duration="10999000" />
+      <workItem from="1663241844069" duration="12039000" />
     </task>
     <servers />
   </component>

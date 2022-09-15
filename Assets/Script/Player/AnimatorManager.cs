@@ -25,6 +25,11 @@ public class AnimatorManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_playerLocomotion.isDriving)
+        {
+            curSpeed = 0;
+            return;
+        }
         var position = transform.position;
         var positionXZ = new Vector3(position.x,0,position.z);
         var curMove = positionXZ - _previousPosition;

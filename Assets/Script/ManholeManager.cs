@@ -20,13 +20,8 @@ public class ManholeManager : MonoBehaviour, IInteractable
         cloggedTrash.transform.localScale = new(currentCapacity/10, currentCapacity/10, currentCapacity/10);
     }
 
-    // Update is called once per frame
-    private void FixedUpdate()
+    private void Update()
     {
-        var vortexTransform = vortex.transform.position;
-        var vortexNewPosition = new Vector3(vortexTransform.x, FloodSystem.Instance.water.transform.position.y+vortexPosOffsetY, vortexTransform.z);
-        vortex.transform.position = vortexNewPosition;
-        vortexStop.transform.position = vortexNewPosition;
         if (currentCapacity >= capacity)
         {
             vortex.SetActive(false);
@@ -36,8 +31,20 @@ public class ManholeManager : MonoBehaviour, IInteractable
         {
             vortex.SetActive(true);
             vortexStop.SetActive(false);
+            prompt = "Clear Sewer";
+            if (currentCapacity == 0)
+            {
+                prompt = "Empty";
+            }
         }
-        
+    }
+    
+    private void FixedUpdate()
+    {
+        var vortexTransform = vortex.transform.position;
+        var vortexNewPosition = new Vector3(vortexTransform.x, FloodSystem.Instance.water.transform.position.y+vortexPosOffsetY, vortexTransform.z);
+        vortex.transform.position = vortexNewPosition;
+        vortexStop.transform.position = vortexNewPosition;
     }
 
     public void CloggedTrashSize()
@@ -61,7 +68,14 @@ public class ManholeManager : MonoBehaviour, IInteractable
     public string InteractionPrompt => prompt;
     public bool Interact(Interactor interactor)
     {
-        Debug.Log("ClearingSewer");
-        return true;
+        if (currentCapacity>0)
+        {
+            currentCapacity--;
+            FloodSystem.Instance.floodMulti -= FloodSystem.Instance.cloggedFloodRate;
+            CloggedTrashSize();
+            return true;
+        }
+        
+        return false;
     }
 }

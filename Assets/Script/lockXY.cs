@@ -1,9 +1,17 @@
+using System;
 using UnityEngine;
 
 public class lockXY : MonoBehaviour
 {
-    private void FixedUpdate()
+    private Vector3 iniRot;
+    private void Start()
     {
-        transform.rotation = Quaternion.Euler(0,transform.eulerAngles.y,0);
+        iniRot = transform.eulerAngles;
+    }
+
+    private void LateUpdate()
+    {
+        iniRot.y = transform.eulerAngles.y;
+        transform.eulerAngles = iniRot;
     }
 }

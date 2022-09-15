@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3862415661936951251}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.566, y: 0.14, z: 0}
+  m_LocalPosition: {x: -0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3862415662042933573}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.477, y: 0.14, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -86,7 +86,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3862415662110819505}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.14, z: -0.512}
+  m_LocalPosition: {x: 0, y: 0, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -117,7 +117,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3862415662389518847}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.14, z: 0.518}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -234,9 +234,8 @@ MonoBehaviour:
     m_Bits: 8
   pullRange: 3
   pullForce: 5
-  manholeInRange: 0
   manholeManager: {fileID: 0}
-  attractedTo: []
+  numFound: 0
 --- !u!114 &3862415662839682923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,11 +250,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupWifi: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3, type: 3}
   maxDuration: 300
-  despawnRange: 0.56
-  isInDespawnRange: 0
+  deSpawnRange: 0.56
+  isInDeSpawnRange: 0
   isManholeFull: 1
   objP: {fileID: 3862415662839682932}
-  test: 0
 --- !u!114 &3862415662839682934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,7 +270,7 @@ MonoBehaviour:
   water: {fileID: 0}
   strength: 1.1
   objectDepth: 0.2
-  velocityDrag: 0.8
+  velocityDrag: 1
   angularDrag: 0.5
   effectors:
   - {fileID: 3862415662389518846}

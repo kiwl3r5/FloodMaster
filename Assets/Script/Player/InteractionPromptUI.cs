@@ -24,6 +24,11 @@ namespace Script.Player
             IsDisplayed = true;
         }
 
+        public void ReCheckPrompt(string promptText)
+        {
+            _promptText.text = promptText;
+        }
+
         public void Close()
         {
             _uiPanel.SetActive(false);

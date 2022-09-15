@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using MidniteOilSoftware;
 using Script.Manager;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CollectiblesObj : MonoBehaviour
 {
@@ -12,17 +13,10 @@ public class CollectiblesObj : MonoBehaviour
     public float maxDuration = 300;
     private float _defaultDuration;
     //public float cloggedFloodRate = 0.02f;
-    public float despawnRange;
-    public bool isInDespawnRange;
+    [FormerlySerializedAs("despawnRange")] public float deSpawnRange;
+    [FormerlySerializedAs("isInDespawnRange")] public bool isInDeSpawnRange;
     public bool isManholeFull = false;
     public ObjectPuller objP;
-    public float test;
-
-    private void Awake()
-    {
-        //manHoleList = objP.attractedTo;
-       //manholeManager = objP.manholeManager;
-    }
 
     private void Start()
     {
@@ -33,23 +27,15 @@ public class CollectiblesObj : MonoBehaviour
         _defaultDuration = maxDuration;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        StartCoroutine(NumTest());
-        maxDuration -= Time.deltaTime;
-        if (maxDuration <= 0)
-        {
-            ObjectPoolManager.DespawnGameObject(gameObject);
-            maxDuration = _defaultDuration;
-        }
-        isInDespawnRange = Physics.CheckSphere(transform.position, despawnRange, objP.whatIsManhole);
-        if (objP.manholeInRange)
+        isInDeSpawnRange = Physics.CheckSphere(transform.position, deSpawnRange, objP.whatIsManhole);
+        if (objP.numFound>0)
         {
             objP.manholeManager.CheckFull();
             isManholeFull = objP.manholeManager.isFull;
-            
         }
-        if (isInDespawnRange && !isManholeFull)
+        if (isInDeSpawnRange && !isManholeFull)
         {
             objP.manholeManager.currentCapacity++;
             FloodSystem.Instance.floodMulti += FloodSystem.Instance.cloggedFloodRate;
@@ -58,10 +44,14 @@ public class CollectiblesObj : MonoBehaviour
         }
     }
 
-    private IEnumerator NumTest()
+    private void FixedUpdate()
     {
-        test++;
-        yield break;
+        maxDuration -= Time.deltaTime;
+        if (maxDuration <= 0)
+        {
+            ObjectPoolManager.DespawnGameObject(gameObject);
+            maxDuration = _defaultDuration;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -105,6 +95,6 @@ public class CollectiblesObj : MonoBehaviour
     {
         var position = transform.position;
         Gizmos.color = Color.magenta;
-        Gizmos.DrawWireSphere(position, despawnRange);
+        Gizmos.DrawWireSphere(position, deSpawnRange);
     }
 }

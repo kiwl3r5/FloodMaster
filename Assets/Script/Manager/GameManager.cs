@@ -170,7 +170,7 @@ namespace Script.Manager
         #region GameUI <========================================================================================
         private void PauseMenuInput()
         {
-            if (!Input.GetKeyDown(KeyCode.Escape) || gameIsWin || gameIsLose || sceneNum == 0) return;
+            if (!Input.GetKeyDown(KeyCode.Escape) || gameIsWin || gameIsLose /*|| sceneNum == 0*/) return;
             Pause_UI(!gameIsPause);
         }
         private void Pause_UI (bool check)

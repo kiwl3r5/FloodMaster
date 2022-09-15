@@ -31,6 +31,7 @@ public class FloodSystem : MonoBehaviour
         }
         playerObj = GameObject.FindGameObjectWithTag("Player");
         _playerPos = playerObj.transform.position;
+        water = GameObject.Find("FloodWater");
     }
 
     private void Start()
@@ -56,6 +57,6 @@ public class FloodSystem : MonoBehaviour
 
     private void FloodRateUi()
     {
-        floodRate.fillAmount = floodMulti / 2.1f;
+        floodRate.fillAmount = floodMulti / 2f;
     }
 }

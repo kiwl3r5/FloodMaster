@@ -8,9 +8,10 @@ namespace Script.Player
         private PlayerManager _playerManager;
         private AnimatorManager _animatorManager;
         private InputManager _inputManager;
-        private Vector3 _moveDirection;
-        private GameObject _cameraObj;
+        [SerializeField]private Vector3 _moveDirection;
+        private Camera _cameraObj;
         private Rigidbody _playerRigidbody;
+        public bool isDriving;
 
         [Header("Falling")]
         public float inAirTimer;
@@ -51,7 +52,7 @@ namespace Script.Player
             _animatorManager = GetComponent<AnimatorManager>();
             _inputManager = GetComponent<InputManager>();
             _playerRigidbody = GetComponent<Rigidbody>();
-            _cameraObj = GameObject.FindWithTag("LockCam");
+            _cameraObj = Camera.main;
             Debug.Assert(_cameraObj != null,"_cameraObj != null");
         }
         
@@ -66,6 +67,10 @@ namespace Script.Player
 
         public void HandleAllMovement()
         {
+            if (isDriving)
+            {
+                return;
+            }
             HandleFallingAndLanding();
             if (_playerManager.isInteracting) 
                 return;
@@ -77,10 +82,16 @@ namespace Script.Player
         {
             if(isJumping)
                 return;
-            _moveDirection = _cameraObj.transform.forward * _inputManager.verticalInput;
-            _moveDirection += _cameraObj.transform.right * _inputManager.horizontalInput;
-            _moveDirection.Normalize();
-            _moveDirection.y = 0;
+            Vector3 forward = _cameraObj.transform.forward;
+            Vector3 right = _cameraObj.transform.right;
+            forward.y = 0;
+            right.y = 0;
+            forward = forward.normalized;
+            right = right.normalized;
+            _moveDirection = forward * _inputManager.verticalInput;
+            _moveDirection += right * _inputManager.horizontalInput;
+            //_moveDirection.Normalize();
+            //_moveDirection.y = 0;
             if (_inputManager.moveAmount > 0.5f)
             {
                 _moveDirection *= sprintingSpeed;
@@ -138,7 +149,7 @@ namespace Script.Player
                     _animatorManager.PlayTargetAnimation("Falling",true);
                 }
 
-                inAirTimer += Time.deltaTime * 1.5f;
+                inAirTimer += Time.deltaTime * 1.3f;
                 _playerRigidbody.AddForce(transform.forward * leapingVelocity);
                 _playerRigidbody.AddForce(-Vector3.up * (fallingVelocity * inAirTimer));
             }

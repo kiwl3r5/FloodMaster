@@ -27,9 +27,12 @@ namespace Script.Player
                 
                 if (_interactable != null)
                 {
+                    _interactionPromptUI.ReCheckPrompt(_interactable.InteractionPrompt);
                     if (!_interactionPromptUI.IsDisplayed)_interactionPromptUI.Setup(_interactable.InteractionPrompt);
-
-                    if (Keyboard.current.eKey.wasPressedThisFrame) _interactable.Interact(this);
+                    if (Keyboard.current.eKey.wasPressedThisFrame)
+                    {
+                        _interactable.Interact(this);
+                    }
                 }
             }
             else

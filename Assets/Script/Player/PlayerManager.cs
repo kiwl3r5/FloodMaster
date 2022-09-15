@@ -38,7 +38,6 @@ namespace Script.Player
             maxHp = hp;
             //healthBar.fillAmount = hp/maxHp;
         }
-
         private void Start()
         {
             if (GameManager.Instance.invincible.isOn)
