@@ -1,6 +1,8 @@
 ﻿using Script.Manager;
+using Script.Player;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Script.Enemy
@@ -9,18 +11,24 @@ namespace Script.Enemy
     {
         [SerializeField] private NavMeshAgent agent;
 
-        [SerializeField] private Transform player;
+        [SerializeField] public Transform player;
 
         [SerializeField] private LayerMask whatIsPlayer;
 
-        [SerializeField] private Transform shootPoint;
+        //[SerializeField] private Transform HittingPoint;
         
-        [SerializeField] private Transform enemy;
+        //[SerializeField] private Transform enemy;
 
         [SerializeField] private GameObject alertSprite;
+        [SerializeField] private GameObject scaredSprite;
         private SpriteRenderer alertSpriteRen;
+        private SpriteRenderer scaredSpriteRen;
         
         private Animator _animator;
+        private FieldOfView _fieldOfView;
+
+        [Header("##### EnemyType #####")]
+        [SerializeField] private bool isDoDamage;
         //[SerializeField] private GameManager gameManager;
 
         //Patrolling
@@ -38,31 +46,34 @@ namespace Script.Enemy
         [SerializeField] private float timeDelayBfAttacks;
         [SerializeField] private float timeDelayAtk;
         private bool _alreadyAttacked;
-        public GameObject projectile;
 
         //States
+        [FormerlySerializedAs("sightRange")]
         [Header("##### States #####")] 
-        [SerializeField] private float sightRange;
+        [SerializeField] private float awareRange;
         [SerializeField] private float attackRange;
-        [SerializeField] private bool playerInSightRange, playerInAttackRange;
+        [SerializeField] private bool playerInAwareRange,canSeePlayer,playerInAttackRange;
         private Vector3 _previousPosition;
         [SerializeField] private float curSpeed;
         //[SerializeField] private float _velocity;
         private float _distance;
         private float _normalizeDistance;
         private float _timeDistance;
-        [SerializeField] private float timeOfDistance = 1;
+        //[SerializeField] private float timeOfDistance = 1;
         private static readonly int velocity = Animator.StringToHash("Velocity");
         private static readonly int IsAttack = Animator.StringToHash("IsAttack");
         [SerializeField] private bool alreadyAlert = false;
+        public bool isFlee;
 
         private void Awake()
         {
             _animator = GetComponent<Animator>();
+            _fieldOfView = GetComponent<FieldOfView>();
             player = GameObject.Find("LookAt").transform;
             agent = GetComponent<NavMeshAgent>();
             timeDelayAtk = timeDelayBfAttacks;
             alertSpriteRen = alertSprite.GetComponent<SpriteRenderer>();
+            scaredSpriteRen = scaredSprite.GetComponent<SpriteRenderer>();
             //transform.position = waypoints[startingWaypoint].position;
         }
 
@@ -74,9 +85,11 @@ namespace Script.Enemy
         private void FixedUpdate()
         {
             //Check for sight and attack range
+            canSeePlayer = _fieldOfView.canSeePlayer;
             var position1 = transform.position;
             var position = position1;
-            playerInSightRange = Physics.CheckSphere(position, sightRange, whatIsPlayer);
+            if (canSeePlayer || Physics.CheckSphere(position, awareRange, whatIsPlayer)) { playerInAwareRange = true; }
+            else { playerInAwareRange = false; }
             playerInAttackRange = Physics.CheckSphere(position, attackRange, whatIsPlayer);
             var positionXZ = new Vector3(position.x,0,position.z);
 
@@ -87,9 +100,13 @@ namespace Script.Enemy
             curSpeed /= agent.speed;
             _previousPosition = positionAf;
             curSpeed = Mathf.Round(curSpeed * 10f) / 10f;
+            if (canSeePlayer)
+            {
+                
+            }
 
-            if (!playerInSightRange && !playerInAttackRange) Patrolling();
-            switch (playerInSightRange)
+            if (!playerInAwareRange && !playerInAttackRange) Patrolling();
+            /*switch (playerInSightRange && !isFlee || PlayerLocomotion.Instance.isDriving)
             {
                 case false:
                     AlertSprite(false);
@@ -105,11 +122,12 @@ namespace Script.Enemy
                     alreadyAlert = true;
                     break;
                 }
-            }
-            if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-            if (playerInAttackRange && playerInSightRange && !GameManager.Instance.gameIsLose) AttackPlayer();
+            }*/
+            if (playerInAwareRange && !playerInAttackRange && !isFlee && !PlayerLocomotion.Instance.isDriving &&!PlayerManager.Instance.isScary) ChasePlayer();
+            if (playerInAwareRange && playerInAttackRange && !GameManager.Instance.gameIsLose && !isFlee && !PlayerLocomotion.Instance.isDriving &&!PlayerManager.Instance.isScary) AttackPlayer();
+            if (playerInAwareRange && isFlee || PlayerLocomotion.Instance.isDriving || PlayerManager.Instance.isScary) Flee();
 
-            _animator.SetFloat(velocity,curSpeed,0.1f,Time.deltaTime);
+                _animator.SetFloat(velocity,curSpeed,0.1f,Time.deltaTime);
 
         }
 
@@ -119,11 +137,11 @@ namespace Script.Enemy
 
             if (_walkPointSet)
                 agent.SetDestination(walkPoint);
-            
             /*if (curSpeed<=0.05f)
             {
                 _walkPointSet = false;
             }*/
+            ScaredSprite(false);
 
             Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
@@ -135,12 +153,15 @@ namespace Script.Enemy
         {
             _waypointIndex = Random.Range(0, waypoints.Length);
             walkPoint = waypoints[_waypointIndex].position;
+            AlertSprite(false);
             _walkPointSet = true;
         }
 
         private void ChasePlayer()
         {
             agent.SetDestination(player.position);
+            ScaredSprite(false);
+            AlertSprite(true);
             _walkPointSet = false;
         }
 
@@ -151,19 +172,11 @@ namespace Script.Enemy
             curSpeed = 0;
             var position = transform.position;
             agent.SetDestination(position);
-            _distance = Vector3.Distance (enemy.transform.position, player.transform.position);
-            _normalizeDistance = _distance / attackRange;
-            _timeDistance = _normalizeDistance * timeOfDistance;
-
             var playerPosition = player.position;
-            Vector3 targetPostition = new Vector3( playerPosition.x, playerPosition.y, playerPosition.z ) ;
             Vector3 targetPostitionXZ = new Vector3( playerPosition.x, position.y, playerPosition.z ) ;
-            Vector3 vo = CalculateVelocity(targetPostition, shootPoint.position, _timeDistance);
             
-            //shootPoint.rotation = Quaternion.LookRotation(Vo);
-            shootPoint.LookAt(vo);
             transform.LookAt(targetPostitionXZ);
-
+            ScaredSprite(false);
 
             if (!_alreadyAttacked)
             { 
@@ -173,10 +186,8 @@ namespace Script.Enemy
                 timeDelayAtk -= Time.deltaTime;
                 if (timeDelayAtk <= 0)
                 {
-                    Rigidbody rb = Instantiate(projectile, shootPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
-                    rb.velocity = vo;
-                    
                     timeDelayAtk = timeDelayBfAttacks;
+                    PlayerLocomotion.Instance.isStunt = true;
                     //End of attack code
 
                     _alreadyAttacked = true;
@@ -184,29 +195,21 @@ namespace Script.Enemy
                 }
             }
         }
+
+        private void Flee()
+        {
+            if (!_walkPointSet) SearchWalkPoint();
+            if (_walkPointSet) agent.SetDestination(walkPoint);
+            Vector3 distanceToWalkPoint = transform.position - walkPoint;
+            Vector3 distanceWalkPointToPlayer = player.position - walkPoint;
+            ScaredSprite(true);
+            if (distanceWalkPointToPlayer.magnitude < 10f)
+                _walkPointSet = false;
+        }
         private void ResetAttack()
         {
             _alreadyAttacked = false;
             _animator.SetBool(IsAttack,false);
-        }
-
-        private static Vector3 CalculateVelocity(Vector3 target, Vector3 origin, float time)
-        {
-            Vector3 distance = target - origin;
-            Vector3 distanceXZPlane = distance;
-            distanceXZPlane.y = 0f;
-
-            float distanceY = distance.y;
-            float distanceXZ = distanceXZPlane.magnitude;
-
-            float vxz = distanceXZ / time;
-            float vy = distanceY / time + 0.5f * Mathf.Abs(Physics.gravity.y) * time;
-
-            Vector3 result = distanceXZPlane.normalized;
-            result *= vxz;
-            result.y = vy;
-
-            return result;
         }
 
         private void OnDrawGizmosSelected()
@@ -215,12 +218,27 @@ namespace Script.Enemy
             var position = transform.position;
             Gizmos.DrawWireSphere(position, attackRange);
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(position, sightRange);
+            Gizmos.DrawWireSphere(position, awareRange);
         }
         
-        private void AlertSprite(bool isHide)
+        private void AlertSprite(bool isEnable)
         {
-            alertSpriteRen.enabled = isHide;
+            alertSpriteRen.enabled = isEnable;
+            if (!alreadyAlert && isEnable)
+            {
+                AudioManager.Instance.Play("Alert");
+            }
+            alreadyAlert = isEnable;
+        }
+        
+        private void ScaredSprite(bool isEnable)
+        {
+            scaredSpriteRen.enabled = isEnable;
+            /*if (!alreadyAlert && isEnable)
+            {
+                //AudioManager.Instance.Play("Scared");
+            }
+            alreadyAlert = isEnable;*/
         }
     }
 }

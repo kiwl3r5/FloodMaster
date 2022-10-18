@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 388799636316041958}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.03, z: -110.87}
   m_LocalScale: {x: 1.4, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -137,10 +137,10 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   colorGradientTexture: {fileID: 2800000, guid: 312dff2e486f35544902e34e75ad8604,
     type: 3}
-  shallowColor: {r: 0.301812, g: 0.2871652, b: 0.23773223, a: 0.08627451}
-  deepColor: {r: 0.5283019, g: 0.5101214, b: 0.4660021, a: 0.78039217}
+  shallowColor: {r: 0.29241592, g: 0.28766197, b: 0.28275946, a: 0.15686275}
+  deepColor: {r: 0.7075471, g: 0.5838714, b: 0.45723563, a: 0.78431374}
   colorDepth: 0.59
-  horizonColor: {r: 0.33957297, g: 0.32235155, b: 0.27068725, a: 1}
+  horizonColor: {r: 0.33941805, g: 0.32219663, b: 0.27053234, a: 1}
   horizonDistance: 16.73
   shoreFade: 1
   shoreColor: {r: 0.5772516, g: 0.8679245, b: 0.81829745, a: 0}
@@ -177,20 +177,20 @@ MonoBehaviour:
   surfaceFoamShadowProjection: 15
   intersectionFoamShadowProjection: 4.6
   foamMovement: 0
-  intersectionFoamDepth: 0.13
+  intersectionFoamDepth: 0.3
   intersectionFoamTexture: {fileID: 2800000, guid: 5293ac8cd3dd6f6478585f4f30abddf7,
     type: 3}
-  intersectionFoamColor: {r: 1, g: 1, b: 1, a: 0.3882353}
+  intersectionFoamColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   intersectionFoamMovement: {x: 0.75, y: 0.2}
   intersectionFoamDirection: 0.75
   intersectionFoamSpeed: 0.2
-  intersectionFoamScale: 0.41
+  intersectionFoamScale: 0.4
   intersectionFoamSampling: {x: 1, y: 1.5}
   intersectionFoamCutoff: 1
   intersectionFoamDistortion: 1.5
   enableIntersectionEffects: 1
   intersectionFoamBlend: 1
-  intersectionWaterBlend: 0
+  intersectionWaterBlend: 0.1
   shoreFoamSpeed: 0
   shoreFoamWidth: 0
   shoreFoamFrequency: 0

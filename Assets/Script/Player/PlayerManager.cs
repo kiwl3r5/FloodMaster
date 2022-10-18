@@ -14,8 +14,13 @@ namespace Script.Player
         private float maxHp;
         public bool godmode = false;
         public GameObject invincHalo;
-
+        public GameObject stuntStar;
         public bool isInteracting;
+        public StormDrainManager stormDrainManager;
+        
+        [Header("Skill Flags")]
+        public bool isBoots;
+        public bool isScary;
         private static readonly int IsInteracting = Animator.StringToHash("IsInteracting");
         private static readonly int IsJumping = Animator.StringToHash("IsJumping");
         private static readonly int IsGrounded = Animator.StringToHash("IsGrounded");
@@ -55,6 +60,7 @@ namespace Script.Player
         {
             _playerLocomotion.HandleAllMovement();
             invincHalo.gameObject.SetActive(godmode);
+            stuntStar.gameObject.SetActive(_playerLocomotion.isStunt);
         }
 
         private void LateUpdate()

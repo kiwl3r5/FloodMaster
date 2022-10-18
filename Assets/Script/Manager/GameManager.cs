@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using Script.Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Script.Manager
@@ -15,14 +17,14 @@ namespace Script.Manager
         public bool gameIsWin;
         public bool gameIsLose;
         public bool isWinUnlock;
-        public float collectible;
-        public float total;
-        public float sumCollected;
+        public float maxKarma = 100;
+        [FormerlySerializedAs("sumCollected")] public float sumKarmaPoints;
         public int sceneNum;
         [SerializeField] private float scoreMax = 10000;
         [SerializeField] private float curScore;
         public float totalPlaytime;
         public string roundedScore;
+        public float endLvDistance;
 
         [Header("UI")]
         public GameObject deadUI;
@@ -33,7 +35,7 @@ namespace Script.Manager
         public GameObject lvCompleteUI;
         public GameObject winUI;
         public GameObject speedUpUI;
-        public GameObject invincUI;
+        [FormerlySerializedAs("invincUI")] public GameObject invincibleUI;
         public GameObject takeDmgUI;
         public Text scoreText;
         public Text realTimeScoreText;
@@ -42,14 +44,24 @@ namespace Script.Manager
         public Button nextLevelButton;
         public Image loadingScreen;
         public Image loadingBarUI;
+        public Image floodBar;
+        public GameObject floodUI;
+        public Image floodRate;
+        public Image floodRateMin;
+        public GameObject minimapUI;
+        public Slider minimapProgress;
         public Button[] restartButtons;
         public Button[] mainMenuButtons;
         public Button[] quitButtons;
-        public Toggle superSpeed;
+        public Toggle floodStop;
         public Toggle invincible;
+        public Slider floodLevel;
         public bool isInvincibleCheatOn;
         public Toggle superJump;
         public Button instantDownload;
+
+        [Header("GameObjPool")]
+        public bool isEmptyPool;
 
         private void Awake()
         {
@@ -67,10 +79,11 @@ namespace Script.Manager
             ButtonSetup(mainMenuButtons);
             ButtonSetup(quitButtons);
             nextLevelButton.onClick.AddListener(LoadLastLevel);
-            superSpeed.onValueChanged.AddListener(delegate {SuperSpeedCheat(superSpeed);});
+            floodStop.onValueChanged.AddListener(delegate {FloodStopCheat(floodStop);});
             invincible.onValueChanged.AddListener(delegate {InvincibleCheat(invincible);});
             superJump.onValueChanged.AddListener(delegate {SuperJumpCheat(superJump);});
-            instantDownload.onClick.AddListener(InstantDownloadCheat);
+            floodLevel.onValueChanged.AddListener(delegate {FloodLevelCheat(floodLevel);});
+            instantDownload.onClick.AddListener(InstantKarmaCheat);
             curScore = scoreMax;
             sceneNum = SceneManager.GetActiveScene().buildIndex;
         }
@@ -78,16 +91,21 @@ namespace Script.Manager
         private void Start()
         {
             returnToText = returnToText.GetComponent<Text>();
+            minimapProgress = minimapUI.GetComponent<Slider>();
             scoreText = scoreText.GetComponent<Text>();
             totalPlayTimeText = totalPlayTimeText.GetComponent<Text>();
             objectiveUI.gameObject.SetActive(sceneNum != 0);
+            /*if (sceneNum != 0)
+            {
+                minimapProgress.maxValue = Vector3.Distance (PlayerLocomotion.Instance.transform.position, WinScript.Instance.gameObject.transform.position);
+            }*/
             // FindObjectOfType<AudioManager>().Play("Theme01");
         }
 
         private void Update()
         {
             PauseMenuInput();
-            CollectibleCheck();
+            //CollectibleCheck();
             if (!gameIsPause&&sceneNum!=0)
             {
                 totalPlaytime += Time.deltaTime;
@@ -102,7 +120,17 @@ namespace Script.Manager
             }
         }
 
-        private void CollectibleCheck()
+        /*private void FixedUpdate()
+        {
+            /*if (sceneNum == 0)
+            {
+                return;
+            }*/
+            //endLvDistance = Vector3.Distance (PlayerLocomotion.Instance.transform.position, WinScript.Instance.gameObject.transform.position);
+            /*minimapProgress.value = minimapProgress.maxValue-endLvDistance;
+        }*/
+
+        /*private void CollectibleCheck()
         {
             if (collectible <= 0)
             {
@@ -116,23 +144,13 @@ namespace Script.Manager
                 isWinUnlock = false;
                 returnToText.text = "Collect Item";
             }
-        }
+        }*/
         #region CheatCode <========================================================================================
-        private void SuperSpeedCheat(Toggle tgValue)
+        private static void FloodStopCheat(Toggle tgValue)
         {
-            switch (tgValue.isOn)
-            {
-                case true:
-                    PlayerLocomotion.Instance.movementSpeed *= 3;
-                    PlayerLocomotion.Instance.sprintingSpeed *= 3;
-                    break;
-                case false:
-                    PlayerLocomotion.Instance.movementSpeed /= 3;
-                    PlayerLocomotion.Instance.sprintingSpeed /= 3;
-                    break;
-            }
+            FloodSystem.Instance.isCheatOn = tgValue.isOn;
         }
-        private void SuperJumpCheat(Toggle tgValue)
+        private static void SuperJumpCheat(Toggle tgValue)
         {
             switch (tgValue.isOn)
             {
@@ -151,26 +169,31 @@ namespace Script.Manager
                 case true:
                     PlayerManager.Instance.godmode = true;
                     isInvincibleCheatOn = true;
-                    invincUI.SetActive(true);
+                    invincibleUI.SetActive(true);
                     break;
                 case false:
                     PlayerManager.Instance.godmode = false;
                     isInvincibleCheatOn = false;
-                    invincUI.SetActive(false);
+                    invincibleUI.SetActive(false);
                     break;
             }
         }
-        private void InstantDownloadCheat()
+
+        private static void FloodLevelCheat(Slider slider)
         {
-            sumCollected = total;
-            collectible = 0;
-            collectedBarUI.fillAmount = sumCollected / total;
+            FloodSystem.Instance.floodPoint = slider.value;
+        }
+        private void InstantKarmaCheat()
+        {
+            sumKarmaPoints = maxKarma;
+            //collectible = 0;
+            collectedBarUI.fillAmount = sumKarmaPoints / maxKarma;
         }
         #endregion //========================================================================================
         #region GameUI <========================================================================================
         private void PauseMenuInput()
         {
-            if (!Input.GetKeyDown(KeyCode.Escape) || gameIsWin || gameIsLose /*|| sceneNum == 0*/) return;
+            if (!Input.GetKeyDown(KeyCode.Escape) || gameIsWin || gameIsLose || sceneNum == 0) return;
             Pause_UI(!gameIsPause);
         }
         private void Pause_UI (bool check)
@@ -230,7 +253,7 @@ namespace Script.Manager
             }
         }
 
-        public void ResetPowerUp()
+        private void ResetPowerUp()
         {
             SpeedUpUI(false);
             InvincUI(false);
@@ -243,14 +266,21 @@ namespace Script.Manager
         
         public void InvincUI(bool check)
         {
-            invincUI.SetActive(check);
+            invincibleUI.SetActive(check);
         }
         
         public void TakeDmgUI(bool check)
         {
             takeDmgUI.SetActive(check);
         }
-        
+        public void FloodUI(bool check)
+        {
+            floodUI.SetActive(check);
+        }
+        public void MiniMapUI(bool check)
+        {
+            minimapUI.SetActive(check);
+        }
         #endregion //========================================================================================
 
         #region SceneControl <===================================================================================
@@ -309,6 +339,8 @@ namespace Script.Manager
             GameWinUI(false);
             GameOverUI(false);
             TakeDmgUI(false);
+            FloodUI(false);
+            MiniMapUI(false);
             LoadLevel(0);
             Cursor.lockState = CursorLockMode.None;
             realTimeScoreText.gameObject.SetActive(false);
@@ -327,6 +359,7 @@ namespace Script.Manager
         
         public void LoadLevel(int sceneIndex)
         {
+            EmptyPool();
             StartCoroutine(LoadAsynchronously(sceneIndex));
             ResetCollectibleN();
         }
@@ -356,11 +389,21 @@ namespace Script.Manager
         }
         #endregion //==================================================================================================
 
+        private void EmptyPool()
+        {
+            isEmptyPool = true;
+            Invoke(nameof(ResetIsEmptyPool),1f);
+        }
         private void ResetCollectibleN()
         {
-            collectible = 0;
-            total = 0;
-            sumCollected = 0;
+            //collectible = 0;
+            //maxKarma = 100;
+            sumKarmaPoints = 0;
+        }
+
+        public void ReloadKarmaUI()
+        {
+            collectedBarUI.fillAmount = sumKarmaPoints / maxKarma;
         }
         private void ButtonSetup(Button[] buttons)
         {
@@ -379,6 +422,11 @@ namespace Script.Manager
                     button.onClick.AddListener(QuitGame);
                 }
             }
+        }
+        
+        private void ResetIsEmptyPool()
+        {
+            isEmptyPool = false;
         }
         private static string TimeFormatter( float seconds )
         {

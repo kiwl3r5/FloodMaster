@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -59,7 +60,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Theme1
     clip: {fileID: 8300000, guid: f4f74b37ccc8a1a429383521f41dedb0, type: 3}
-    volume: 0.14
+    volume: 0
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0

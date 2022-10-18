@@ -16,7 +16,12 @@ TagManager:
   - Collectable
   - ground
   - manholeRad
+  - NoSewerSpawn
   - FxTemporaire
+  - EndLV
+  - HpUI
+  - HelperObj
+  - NoSlowArea
   layers:
   - Default
   - TransparentFX
@@ -30,8 +35,8 @@ TagManager:
   - Interactable
   - WaterSFX
   - PostProcessing
-  - 
-  - 
+  - Obtacles
+  - HelperObj
   - 
   - 
   - 

@@ -103,7 +103,7 @@ Material:
     - _ReceiveShadows: 0
     - _Smoothness: 0.5
     - _SoftParticlesEnabled: 0
-    - _SoftParticlesFarFadeDistance: 1
+    - _SoftParticlesFarFadeDistance: 0.3
     - _SoftParticlesNearFadeDistance: 0
     - _SrcBlend: 5
     - _Surface: 1

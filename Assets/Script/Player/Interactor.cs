@@ -24,14 +24,26 @@ namespace Script.Player
             if (numFound>0)
             {
                 _interactable = _colliders[0].GetComponent<IInteractable>();
-                
+
                 if (_interactable != null)
                 {
-                    _interactionPromptUI.ReCheckPrompt(_interactable.InteractionPrompt);
-                    if (!_interactionPromptUI.IsDisplayed)_interactionPromptUI.Setup(_interactable.InteractionPrompt);
-                    if (Keyboard.current.eKey.wasPressedThisFrame)
+                    if (!_interactionPromptUI.IsDisplayed)_interactionPromptUI.Setup(_interactable.InteractionPrompt,_interactable.InteractionPrompt1,_interactable.IsEKeyEnable,_interactable.IsFKeyEnable);
+                    if (_interactionPromptUI.IsDisplayed)
+                    {
+                        _interactionPromptUI.ReCheckPrompt(_interactable.InteractionPrompt,_interactable.InteractionPrompt1);
+                        _interactionPromptUI.ReCheckEnable(_interactable.IsEKeyEnable,_interactable.IsFKeyEnable);
+                    }
+                    if (Keyboard.current.eKey.wasPressedThisFrame && _interactable.IsEKeyEnable)
                     {
                         _interactable.Interact(this);
+                    }
+                    if (Keyboard.current.fKey.wasPressedThisFrame && _interactable.IsFKeyEnable)
+                    {
+                        if (_colliders[0].CompareTag("manhole"))
+                        {
+                            PlayerManager.Instance.stormDrainManager = _colliders[0].GetComponent<StormDrainManager>();
+                        }
+                        _interactable.Interact1(this);
                     }
                 }
             }

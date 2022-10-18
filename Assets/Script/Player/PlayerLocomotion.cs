@@ -1,4 +1,6 @@
+using System;
 using Script.Manager;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Script.Player
@@ -10,8 +12,7 @@ namespace Script.Player
         private InputManager _inputManager;
         [SerializeField]private Vector3 _moveDirection;
         private Camera _cameraObj;
-        private Rigidbody _playerRigidbody;
-        public bool isDriving;
+        public Rigidbody playerRigidbody;
 
         [Header("Falling")]
         public float inAirTimer;
@@ -23,11 +24,18 @@ namespace Script.Player
         [Header("Movement Flags")]
         public bool isGrounded;
         public bool isJumping;
-        
+        public bool isDriving;
+        public bool isStunt;
+        public float stuntDuration = 2f;
+        private float _defaultStuntDuration;
+        private bool _outOfWater;
+
         [Header("Move Speed")]
         public float movementSpeed = 2f;
         public float sprintingSpeed = 7f;
         public float rotationSpeed = 20;
+        [SerializeField] private float defaultMoveSpeed;
+        public float defaultSprintSpeed;
 
         [Header("Jump")]
         public float jumpHeight = 3;
@@ -36,7 +44,7 @@ namespace Script.Player
 
 
         private static readonly int IsJumping = Animator.StringToHash("IsJumping");
-        
+        private static readonly int IsDriving = Animator.StringToHash("IsDriving");
         private static PlayerLocomotion _instance;
         public static PlayerLocomotion Instance { get { return _instance; } }
 
@@ -51,16 +59,20 @@ namespace Script.Player
             _playerManager = GetComponent<PlayerManager>();
             _animatorManager = GetComponent<AnimatorManager>();
             _inputManager = GetComponent<InputManager>();
-            _playerRigidbody = GetComponent<Rigidbody>();
+            playerRigidbody = GetComponent<Rigidbody>();
             _cameraObj = Camera.main;
+            defaultMoveSpeed = movementSpeed;
+            defaultSprintSpeed = sprintingSpeed;
+            _defaultStuntDuration = stuntDuration;
             Debug.Assert(_cameraObj != null,"_cameraObj != null");
+            _outOfWater = false;
         }
         
         private void Start()
         {
-            if (!GameManager.Instance.superSpeed.isOn) return;
+            /*if (!GameManager.Instance.superSpeed.isOn) return;
             movementSpeed *= 3;
-            sprintingSpeed *= 3;
+            sprintingSpeed *= 3;*/
             if (!GameManager.Instance.superJump.isOn) return;
             jumpHeight *= 4;
         }
@@ -72,10 +84,56 @@ namespace Script.Player
                 return;
             }
             HandleFallingAndLanding();
-            if (_playerManager.isInteracting) 
-                return;
+            if (_playerManager.isInteracting) return;
+            if (isStunt)
+            {
+                if (GameManager.Instance.isInvincibleCheatOn)
+                {
+                    goto skip;
+                }
+                stuntDuration -= Time.deltaTime;
+                if (stuntDuration>0)
+                {
+                    playerRigidbody.velocity = Vector3.zero;
+                    return;
+                }
+                skip:
+                stuntDuration = _defaultStuntDuration;
+                isStunt = false;
+            }
+            MovementSpeed();
             HandleMovement();
             HandleRotation();
+        }
+
+        private void MovementSpeed()
+        {
+            if (_playerManager.isBoots || _outOfWater)
+            {
+                sprintingSpeed = defaultSprintSpeed;
+                movementSpeed = defaultMoveSpeed;
+                return;
+            }
+            var floodSys = FloodSystem.Instance;
+            switch (floodSys.floodPoint)
+            {
+                case > 75:
+                    sprintingSpeed = defaultSprintSpeed*0.4f;
+                    movementSpeed = defaultMoveSpeed*0.4f;
+                    break;
+                case > 50:
+                    sprintingSpeed = defaultSprintSpeed*0.6f;
+                    movementSpeed = defaultMoveSpeed*0.6f;
+                    break;
+                case > 25:
+                    sprintingSpeed = defaultSprintSpeed*0.8f;
+                    movementSpeed = defaultMoveSpeed*0.8f;
+                    break;
+                default:
+                    sprintingSpeed = defaultSprintSpeed;
+                    movementSpeed = defaultMoveSpeed;
+                    break;
+            }
         }
 
         private void HandleMovement()
@@ -102,7 +160,7 @@ namespace Script.Player
             }
 
             var movementVelocity = _moveDirection;
-            _playerRigidbody.velocity = movementVelocity;
+            playerRigidbody.velocity = movementVelocity;
         }
 
         private void HandleRotation()
@@ -146,19 +204,19 @@ namespace Script.Player
             {
                 if (!_playerManager.isInteracting)
                 {
-                    _animatorManager.PlayTargetAnimation("Falling",true);
+                    _animatorManager.PlayTargetAnimation("Falling",true,0.4f);
                 }
 
                 inAirTimer += Time.deltaTime * 1.3f;
-                _playerRigidbody.AddForce(transform.forward * leapingVelocity);
-                _playerRigidbody.AddForce(-Vector3.up * (fallingVelocity * inAirTimer));
+                playerRigidbody.AddForce(transform.forward * leapingVelocity);
+                playerRigidbody.AddForce(-Vector3.up * (fallingVelocity * inAirTimer));
             }
 
             if (Physics.SphereCast(rayCastOrigin,0.2f,-Vector3.up,out var hit,groundLayer))
             {
                 if (!isGrounded && !_playerManager.isInteracting)
                 {
-                    _animatorManager.PlayTargetAnimation("Land",true);
+                    _animatorManager.PlayTargetAnimation("Land",true,0.2f);
                 }
 
                 var rayCasHitPoint = hit.point;
@@ -185,15 +243,39 @@ namespace Script.Player
 
         public void HandleJumping()
         {
-            if (jumpCount <= 0 || isJumping) return;
+            if (!isGrounded || isJumping) return;
             _animatorManager.animator.SetBool(IsJumping,true);
-            _animatorManager.PlayTargetAnimation("Jump",false);
+            _animatorManager.PlayTargetAnimation("Jump",false,0.4f);
 
             jumpCount--;
             var jumpingVelocity = Mathf.Sqrt(-2f * gravityIntensity * jumpHeight);
             var playerVelocity = _moveDirection;
             playerVelocity.y = jumpingVelocity;
-            _playerRigidbody.velocity = playerVelocity;
+            playerRigidbody.velocity = playerVelocity;
+        }
+
+        public void LookAtTarget(Vector3 target)
+        {
+            var playerPosition = transform.position;
+            var targetLookRotation = Quaternion.LookRotation(target - playerPosition);
+            targetLookRotation.x = 0;
+            transform.rotation = targetLookRotation;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("NoSlowArea"))
+            {
+                _outOfWater = true;
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("NoSlowArea"))
+            {
+                _outOfWater = false;
+            }
         }
     }
 }

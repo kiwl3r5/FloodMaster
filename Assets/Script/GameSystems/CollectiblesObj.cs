@@ -17,40 +17,46 @@ public class CollectiblesObj : MonoBehaviour
     [FormerlySerializedAs("isInDespawnRange")] public bool isInDeSpawnRange;
     public bool isManholeFull = false;
     public ObjectPuller objP;
+    private StormDrainManager _stormDrainManager;
 
     private void Start()
     {
         //gm = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-        GameManager.Instance.collectible++;
-        GameManager.Instance.total++;
-        GameManager.Instance.collectedBarUI.fillAmount = GameManager.Instance.sumCollected / GameManager.Instance.total;
+        //GameManager.Instance.collectible++;
+        //GameManager.Instance.total++;
+        GameManager.Instance.collectedBarUI.fillAmount = GameManager.Instance.sumKarmaPoints / GameManager.Instance.maxKarma;
         _defaultDuration = maxDuration;
-    }
-
-    private void Update()
-    {
-        isInDeSpawnRange = Physics.CheckSphere(transform.position, deSpawnRange, objP.whatIsManhole);
-        if (objP.numFound>0)
-        {
-            objP.manholeManager.CheckFull();
-            isManholeFull = objP.manholeManager.isFull;
-        }
-        if (isInDeSpawnRange && !isManholeFull)
-        {
-            objP.manholeManager.currentCapacity++;
-            FloodSystem.Instance.floodMulti += FloodSystem.Instance.cloggedFloodRate;
-            objP.manholeManager.CloggedTrashSize();
-            DespawnObj();
-        }
+        _stormDrainManager = objP.stormDrainManager;
     }
 
     private void FixedUpdate()
     {
+        _stormDrainManager = objP.stormDrainManager;
+        isInDeSpawnRange = Physics.CheckSphere(transform.position, deSpawnRange, objP.whatIsManhole);
+        if (objP.numFound>0)
+        {
+            _stormDrainManager.CheckFull();
+            isManholeFull = _stormDrainManager.isFull;
+        }
+        if (isInDeSpawnRange && !isManholeFull)
+        {
+            if (_stormDrainManager.isClearBonus)
+            { return; }
+            _stormDrainManager.currentCapacity++;
+            FloodSystem.Instance.floodMulti += FloodSystem.Instance.cloggedFloodRate;
+            _stormDrainManager.CloggedTrashSize();
+            DeSpawnObj();
+        }
         maxDuration -= Time.deltaTime;
         if (maxDuration <= 0)
         {
             ObjectPoolManager.DespawnGameObject(gameObject);
             maxDuration = _defaultDuration;
+        }
+        if (GameManager.Instance.isEmptyPool)
+        {
+            DeSpawnObj();
+            ObjectPoolManager.EmptyPool();
         }
     }
 
@@ -62,9 +68,9 @@ public class CollectiblesObj : MonoBehaviour
             AudioManager.Instance.Play("Wifi");
             ObjectPoolManager.DespawnGameObject(gameObject);
             //Destroy(gameObject);
-            GameManager.Instance.sumCollected++;
-            GameManager.Instance.collectible--;
-            GameManager.Instance.collectedBarUI.fillAmount = GameManager.Instance.sumCollected / GameManager.Instance.total;
+            GameManager.Instance.sumKarmaPoints++;
+            //GameManager.Instance.collectible--;
+            GameManager.Instance.ReloadKarmaUI();
             maxDuration = _defaultDuration;
             //isManholeFull = true;
         }
@@ -85,12 +91,12 @@ public class CollectiblesObj : MonoBehaviour
         }*/
     }
 
-    public void DespawnObj()
+    private void DeSpawnObj()
     {
         ObjectPoolManager.DespawnGameObject(gameObject);
         maxDuration = _defaultDuration;
     }
-    
+
     private void OnDrawGizmosSelected()
     {
         var position = transform.position;

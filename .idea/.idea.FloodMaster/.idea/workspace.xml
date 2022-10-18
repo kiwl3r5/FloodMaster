@@ -6,24 +6,79 @@
   <component name="ChangeListManager">
     <list default="true" id="fb1edc33-db92-4ff5-a6b9-9bffbaf053c5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FloodMaster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FloodMaster/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3DModels/Player/Ch03_1001_Normal.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3DModels/Player/Ch03_1001_Normal.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3DModels/Player/Ch46_nonPBR.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3DModels/Player/Ch46_nonPBR.fbx.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/3DModels/Player/Player.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3DModels/Player/Player.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3DModels/Player/PlayerMenu.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3DModels/Player/PlayerMenu.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ImportedAssets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ImportedAssets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/JMO Assets/Cartoon FX/CFX2 Prefabs/Water/VortexWaterStop.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/JMO Assets/Cartoon FX/CFX2 Prefabs/Water/VortexWaterStop.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/JMO Assets/Cartoon FX/Materials/Fire/CFX3_FireSparkle ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/JMO Assets/Cartoon FX/Materials/Fire/CFX3_FireSparkle ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MidniteOilSoftware/Prefabs/ObjectPoolManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MidniteOilSoftware/Prefabs/ObjectPoolManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NoneFriction.physicMaterial" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NoneFriction.physicMaterial" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/AudioManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/AudioManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/FloodWater.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/FloodWater.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/GameManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/GameManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Manhole.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Manhole.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefab/Trash.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Trash.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/alert.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/alert.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RainMaker/Prefab/BaseRainScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RainMaker/Prefab/BaseRainScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RainMaker/Prefab/RainExplosionMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RainMaker/Prefab/RainExplosionMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RainMaker/Prefab/RainPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RainMaker/Prefab/RainPrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/test01.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/test01.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/AddFoce.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/AddFoce.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Enemy/EnemyAi.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Enemy/EnemyAi.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/GameSystems/CollectiblesObj.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/GameSystems/CollectiblesObj.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/GameSystems/FloodSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/GameSystems/FloodSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/GameSystems/Ridable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/GameSystems/Ridable.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Manager/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ManholeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/ManholeManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/MenuManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Manager/MenuManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/ManholeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/StormDrainManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/ManholeManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/StormDrainManager.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/ObjectPuller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/ObjectPuller.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Player/AnimatorManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Player/AnimatorManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Player/IInteractable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Player/IInteractable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Player/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Player/InputManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Player/InteractionPromptUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Player/InteractionPromptUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Player/Interactor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Player/Interactor.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Player/PlayerLocomotion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Player/PlayerLocomotion.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Player/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Player/PlayerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/lockXY.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/lockXY.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/TrashManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/SpawnManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/TrashManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/SpawnManager.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Stylized Water For URP/Materials/Flood.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water For URP/Materials/Flood.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water For URP/Materials/Ocean.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water For URP/Materials/Ocean.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water For URP/Materials/Windwaker.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water For URP/Materials/Windwaker.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/CustomAlpha/GodMode-02.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/CustomAlpha/GodMode-02.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/CustomAlpha/alert.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/CustomAlpha/alert.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/Logo.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/Logo.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/UI/HP/FloodRateBG.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/UI/HP/FloodRateBG.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/UI/HP/Hp.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/UI/HP/Hp.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/UI/HP/HpBG.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/UI/HP/HpBG.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/UI/Interact/InteractUI.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/UI/Interact/InteractUI.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/UI/Key/Key.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/UI/Key/Key.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/UI/Loading/LoadingBG.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/UI/Loading/LoadingBG.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/UI/Menu/Logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/UI/Menu/Logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/UI/Menu/QuitMenu.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/UI/Menu/QuitMenu.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/UI/Menu/StartMenu.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/UI/Menu/StartMenu.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/UI/MiniMap/MiniMap.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/UI/MiniMap/MiniMap.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/UI/ObjTive/ObjtProgress.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/UI/ObjTive/ObjtProgress.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/UI/ObjTive/ObjtProgressBg.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/UI/ObjTive/ObjtProgressBg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiny_Toony_City_Demo/Meshes/Car_B1.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tiny_Toony_City_Demo/Meshes/Car_B1.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiny_Toony_City_Demo/Meshes/Demo_Block.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tiny_Toony_City_Demo/Meshes/Demo_Block.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +94,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Script/MissionWaypoint.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.7/Runtime/UniversalRenderPipeline.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -49,23 +105,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="Discover.Launch.Via.Unity" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="rider.run.widget.enabled.cache" value="false" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="ReaderModeSettings">
     <option name="showLigatures" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../Build\Thesis.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="D:\BU_works\Thesis\Game\Thesis\Build" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.9f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath D:\BU_works\Thesis\Game\Thesis\FloodMaster -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="D:\BU_works\Thesis\Game\Thesis\FloodMaster" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
@@ -106,7 +177,24 @@
       <workItem from="1663142796916" duration="292000" />
       <workItem from="1663143126094" duration="78000" />
       <workItem from="1663143267879" duration="10999000" />
-      <workItem from="1663241844069" duration="12039000" />
+      <workItem from="1663241844069" duration="12065000" />
+      <workItem from="1663681681930" duration="4741000" />
+      <workItem from="1664007877521" duration="24605000" />
+      <workItem from="1664095211248" duration="29732000" />
+      <workItem from="1664184815780" duration="19632000" />
+      <workItem from="1664280308711" duration="17532000" />
+      <workItem from="1664326937052" duration="1193000" />
+      <workItem from="1664358329579" duration="8527000" />
+      <workItem from="1664384682247" duration="22162000" />
+      <workItem from="1664452878412" duration="27537000" />
+      <workItem from="1664540217124" duration="19434000" />
+      <workItem from="1664672817459" duration="12183000" />
+      <workItem from="1664817829547" duration="14950000" />
+      <workItem from="1664918951054" duration="10624000" />
+      <workItem from="1665360735802" duration="4362000" />
+      <workItem from="1665905421760" duration="5213000" />
+      <workItem from="1665969582640" duration="1614000" />
+      <workItem from="1666077021382" duration="15938000" />
     </task>
     <servers />
   </component>
@@ -116,6 +204,17 @@
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>

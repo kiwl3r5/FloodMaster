@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.Serialization;
 
 public class ObjectPuller : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class ObjectPuller : MonoBehaviour
     //public bool manholeInRange;
     
     //public CollectiblesObj collectiblesObj;
-    public ManholeManager manholeManager;
+    [FormerlySerializedAs("manholeManager")] public StormDrainManager stormDrainManager;
     //public Vector3 manholePosition;
 
     //public List<GameObject> attractedTo;
@@ -28,17 +29,22 @@ public class ObjectPuller : MonoBehaviour
             
         if (numFound>0)
         {
-            manholeManager = _ManholeColliders[0].GetComponent<ManholeManager>();
-            var direction = manholeManager.transform.position - transform.position;
+            stormDrainManager = _ManholeColliders[0].GetComponent<StormDrainManager>();
+            var direction = stormDrainManager.transform.position - transform.position;
 
-            if (manholeManager != null)
+            if (stormDrainManager != null)
             {
-                if (!manholeManager.isFull) gameObject.GetComponent<Rigidbody>().AddForce (pullForce * direction);
+                if (!stormDrainManager.isFull)
+                {
+                    if (stormDrainManager.isClearBonus)
+                    { return; }
+                    gameObject.GetComponent<Rigidbody>().AddForce (pullForce * direction);
+                }
             }
         }
         else
         {
-            if (manholeManager != null) manholeManager = null;
+            if (stormDrainManager != null) stormDrainManager = null;
         }
     }
 

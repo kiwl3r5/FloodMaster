@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AddFoce : MonoBehaviour
 {
-    public float thrust = 1.0f;
+    public float thrust = 6;
     public Rigidbody rb;
     
     // Start is called before the first frame update

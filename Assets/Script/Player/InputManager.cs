@@ -63,6 +63,10 @@ namespace Script.Player
         
         private void HandleJumpInput(InputAction.CallbackContext obj)
         {
+            if (_playerLocomotion.isDriving || _playerLocomotion.isStunt)
+            {
+                return;
+            }
             _playerLocomotion.HandleJumping();
         }
 

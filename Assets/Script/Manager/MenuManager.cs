@@ -19,7 +19,8 @@ namespace Script.Manager
             startButton.onClick.AddListener(StartGame);
             creditsOpen.onClick.AddListener(OpenCloseCredits);
             creditsClose.onClick.AddListener(OpenCloseCredits);
-            
+            GameManager.Instance.FloodUI(false);
+            GameManager.Instance.MiniMapUI(false);
         }
 
         private static void StartGame()
@@ -28,6 +29,8 @@ namespace Script.Manager
             Cursor.lockState = CursorLockMode.Locked;
             GameManager.Instance.objectiveUI.gameObject.SetActive(true);
             GameManager.Instance.realTimeScoreText.gameObject.SetActive(true);
+            GameManager.Instance.FloodUI(true);
+            GameManager.Instance.MiniMapUI(true);
             GameManager.Instance.sceneNum = 1;
             AudioManager.Instance.Play("Theme1");
         }
