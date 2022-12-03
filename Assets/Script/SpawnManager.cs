@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using MidniteOilSoftware;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -7,11 +5,14 @@ using UnityEngine.Serialization;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField]private GameObject player;
-    [SerializeField]private GameObject trash;
+    [SerializeField]private GameObject trashSmall;
+    [SerializeField]private GameObject trashMedium;
+    [SerializeField]private GameObject trashLarge;
     [SerializeField]private GameObject helper;
-    [SerializeField]private GameObject Motocycle;
+    [FormerlySerializedAs("motocycle")] [SerializeField]private GameObject motorcycle;
+    [SerializeField] private GameObject boat;
     [FormerlySerializedAs("trashSpawner")] [SerializeField]private Transform[] spawner;
-    [FormerlySerializedAs("spawnDelay")] [SerializeField]private float trashSpawnDelay = 5;
+    [FormerlySerializedAs("spawnDelay")] [SerializeField]private float trashSpawnDelay = 1.75f;
     [SerializeField]private float helperSpawnDelay = 10;
     [SerializeField] private float obstacleSpawnDelay = 20;
     private float _trashDelayDefault;
@@ -56,13 +57,66 @@ public class SpawnManager : MonoBehaviour
 
         var ran = RandomSystem(0, 3);
         var ranF = RandomSystem(4, 7);
+        var chance = Random.value;
         ranTransform = RandomSystem(-1, 1);
-        ObjectPoolManager.SpawnGameObject(trash, spawner[ran].position, Quaternion.identity);
-        ObjectPoolManager.SpawnGameObject(trash, spawner[ranF].position, Quaternion.identity);
         //Instantiate(trash, trashSpawner[ran].position,Quaternion.identity);
         
-        trashSpawnDelay = _trashDelayDefault;
+        if (LevelScaling.Instance.levelScale <= 1)
+        {
+            ObjectPoolManager.SpawnGameObject(trashSmall, spawner[ran].position, Quaternion.identity);
+            ObjectPoolManager.SpawnGameObject(trashSmall, spawner[ranF].position, Quaternion.identity);
+            trashSpawnDelay = _trashDelayDefault;
+        }
+        if (LevelScaling.Instance.levelScale == 2)
+        {
+            switch (chance)
+            {
+                case <= 0.8f:
+                    ObjectPoolManager.SpawnGameObject(trashSmall, spawner[ran].position, Quaternion.identity);
+                    ObjectPoolManager.SpawnGameObject(trashSmall, spawner[ranF].position, Quaternion.identity);
+                    break;
+                case > 0.8f:
+                    ObjectPoolManager.SpawnGameObject(trashMedium, spawner[ran].position, Quaternion.identity);
+                    ObjectPoolManager.SpawnGameObject(trashMedium, spawner[ranF].position, Quaternion.identity);
+                    break;
+            }
 
+            trashSpawnDelay = _trashDelayDefault*0.8f;
+        }
+        if (LevelScaling.Instance.levelScale == 3)
+        {
+            switch (chance)
+            {
+                case <= 0.5f:
+                    ObjectPoolManager.SpawnGameObject(trashSmall, spawner[ran].position, Quaternion.identity);
+                    ObjectPoolManager.SpawnGameObject(trashSmall, spawner[ranF].position, Quaternion.identity);
+                    break;
+                case > 0.5f:
+                    ObjectPoolManager.SpawnGameObject(trashMedium, spawner[ran].position, Quaternion.identity);
+                    ObjectPoolManager.SpawnGameObject(trashMedium, spawner[ranF].position, Quaternion.identity);
+                    break;
+            }
+            trashSpawnDelay = _trashDelayDefault*0.6f;
+        }
+        if (LevelScaling.Instance.levelScale >= 4)
+        {
+            switch (chance)
+            {
+                case <= 0.2f:
+                    ObjectPoolManager.SpawnGameObject(trashSmall, spawner[ran].position, Quaternion.identity);
+                    ObjectPoolManager.SpawnGameObject(trashSmall, spawner[ranF].position, Quaternion.identity);
+                    break;
+                case > 0.2f and <= 0.5f:
+                    ObjectPoolManager.SpawnGameObject(trashMedium, spawner[ran].position, Quaternion.identity);
+                    ObjectPoolManager.SpawnGameObject(trashMedium, spawner[ranF].position, Quaternion.identity);
+                    break;
+                case > 0.5f:
+                    ObjectPoolManager.SpawnGameObject(trashLarge, spawner[ran].position, Quaternion.identity);
+                    ObjectPoolManager.SpawnGameObject(trashLarge, spawner[ranF].position, Quaternion.identity);
+                    break;
+            }
+            trashSpawnDelay = _trashDelayDefault*0.4f;
+        }
     }
     
     private void HelperSpawner()
@@ -99,7 +153,14 @@ public class SpawnManager : MonoBehaviour
 
         var ran = RandomSystem(5, 6);
         var ranDelay = RandomSystem(0, 15);
-        ObjectPoolManager.SpawnGameObject(Motocycle, spawner[ran].position, Quaternion.identity);
+        if (FloodSystem.Instance.floodPoint<40)
+        {
+            ObjectPoolManager.SpawnGameObject(motorcycle, spawner[ran].position, Quaternion.identity);
+        }
+        else
+        {
+            ObjectPoolManager.SpawnGameObject(boat, spawner[ran].position, Quaternion.identity);
+        }
         obstacleSpawnDelay = _obstacleDelayDefault+ranDelay;
 
     }

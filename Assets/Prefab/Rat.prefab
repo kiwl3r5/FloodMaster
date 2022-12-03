@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2210523828118928544}
   - component: {fileID: 2210523828118928551}
   - component: {fileID: 7632315614939082672}
+  - component: {fileID: 3784313595791657006}
   - component: {fileID: 2210523828118928550}
   - component: {fileID: 8543258575916427496}
   m_Layer: 9
@@ -79,6 +80,8 @@ MonoBehaviour:
     m_Bits: 64
   alertSprite: {fileID: 4160987583510240126}
   scaredSprite: {fileID: 9183923476280119920}
+  npcMesh: {fileID: 2210523828418267915}
+  _animator: {fileID: 2210523828118928550}
   isDoDamage: 0
   waypoints:
   - {fileID: 0}
@@ -111,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAi: {fileID: 2210523828118928544}
-  healthPoint: 100
+  healthPoint: 80
   damageReceived: 10
   fleeDuration: 30
   isFlee: 0
@@ -132,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 8
-  angle: 100
+  angle: 120
   playerRef: {fileID: 0}
   targetMask:
     serializedVersion: 2
@@ -141,6 +144,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   canSeePlayer: 0
+--- !u!114 &3784313595791657006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2210523828118928546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f9ab420d684ce894f74eea149c0ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcMesh: {fileID: 2210523828418267915}
+  chance: 0
 --- !u!95 &2210523828118928550
 Animator:
   serializedVersion: 4
@@ -183,7 +200,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2210523828418267912}
-  - component: {fileID: 2210523828418267913}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -209,19 +225,6 @@ Transform:
   m_Father: {fileID: 2210523828118928547}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2210523828418267913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2210523828418267915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e87166d9b2bece44784a67f60148735d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  water: {fileID: 0}
 --- !u!1 &9183923476280119920
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,7 +342,7 @@ PrefabInstance:
     - target: {fileID: 420023487268552648, guid: c74cf35a5d5c9ed459170f21cf18c614,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.044
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 420023487268552648, guid: c74cf35a5d5c9ed459170f21cf18c614,
         type: 3}
@@ -381,10 +384,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3312678352009097355, guid: c74cf35a5d5c9ed459170f21cf18c614,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.17
+      objectReference: {fileID: 0}
     - target: {fileID: 4662168603118397998, guid: c74cf35a5d5c9ed459170f21cf18c614,
         type: 3}
       propertyPath: m_Name
       value: RatGroup
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899989543202365849, guid: c74cf35a5d5c9ed459170f21cf18c614,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 6319636156445365513, guid: c74cf35a5d5c9ed459170f21cf18c614,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8976039440183385195, guid: c74cf35a5d5c9ed459170f21cf18c614,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c74cf35a5d5c9ed459170f21cf18c614, type: 3}

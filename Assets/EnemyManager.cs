@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Script.Enemy;
+using Script.Manager;
 using Script.Player;
 using UnityEngine;
 
@@ -62,8 +63,8 @@ public class EnemyManager : MonoBehaviour,IInteractable
         if (healthPoint>0)
         {
             healthPoint -= damageReceived;
-            var enemyPosition = transform.position;
-            PlayerLocomotion.Instance.LookAtTarget(enemyPosition);
+            ScoreManager.Instance.rawScore += 20;
+            PlayerLocomotion.Instance.LookAtTarget(transform.position);
             if (!PlayerManager.Instance.isInteracting)
             {
                 AnimatorManager.Instance.PlayTargetAnimation("ScareEnemy",true,0.1f);

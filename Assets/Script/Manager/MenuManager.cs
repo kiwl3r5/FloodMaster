@@ -6,6 +6,7 @@ namespace Script.Manager
     public class MenuManager : MonoBehaviour
     {
         public Button startButton;
+        public Button optionsButton;
         public Button quitButton;
         public GameObject creditsPanel;
         public Button creditsOpen;
@@ -17,6 +18,7 @@ namespace Script.Manager
             isCreditsOpen = false;
             quitButton.onClick.AddListener(Quit);
             startButton.onClick.AddListener(StartGame);
+            optionsButton.onClick.AddListener(Options);
             creditsOpen.onClick.AddListener(OpenCloseCredits);
             creditsClose.onClick.AddListener(OpenCloseCredits);
             GameManager.Instance.FloodUI(false);
@@ -33,6 +35,11 @@ namespace Script.Manager
             GameManager.Instance.MiniMapUI(true);
             GameManager.Instance.sceneNum = 1;
             AudioManager.Instance.Play("Theme1");
+        }
+        
+        private static void Options()
+        {
+            GameManager.Instance.OptionsUI();
         }
 
         private static void Quit()

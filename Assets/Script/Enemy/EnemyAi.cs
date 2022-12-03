@@ -21,14 +21,15 @@ namespace Script.Enemy
 
         [SerializeField] private GameObject alertSprite;
         [SerializeField] private GameObject scaredSprite;
+        [SerializeField] private GameObject npcMesh;
         private SpriteRenderer alertSpriteRen;
         private SpriteRenderer scaredSpriteRen;
         
-        private Animator _animator;
+        [SerializeField] private Animator _animator;
         private FieldOfView _fieldOfView;
 
         [Header("##### EnemyType #####")]
-        [SerializeField] private bool isDoDamage;
+        public bool isDoDamage;
         //[SerializeField] private GameManager gameManager;
 
         //Patrolling
@@ -38,6 +39,7 @@ namespace Script.Enemy
         [SerializeField] private int startingWaypoint;
         [SerializeField] private Vector3 walkPoint;
         private bool _walkPointSet;
+        //private Vector3 _playerLastLocation;
         //[SerializeField] private float walkPointRange;
 
         //Attacking
@@ -67,7 +69,7 @@ namespace Script.Enemy
 
         private void Awake()
         {
-            _animator = GetComponent<Animator>();
+            //_animator = GetComponent<Animator>();
             _fieldOfView = GetComponent<FieldOfView>();
             player = GameObject.Find("LookAt").transform;
             agent = GetComponent<NavMeshAgent>();
@@ -84,6 +86,10 @@ namespace Script.Enemy
 
         private void FixedUpdate()
         {
+            if (!npcMesh.activeInHierarchy)
+            {
+                return;
+            }
             //Check for sight and attack range
             canSeePlayer = _fieldOfView.canSeePlayer;
             var position1 = transform.position;
@@ -100,10 +106,6 @@ namespace Script.Enemy
             curSpeed /= agent.speed;
             _previousPosition = positionAf;
             curSpeed = Mathf.Round(curSpeed * 10f) / 10f;
-            if (canSeePlayer)
-            {
-                
-            }
 
             if (!playerInAwareRange && !playerInAttackRange) Patrolling();
             /*switch (playerInSightRange && !isFlee || PlayerLocomotion.Instance.isDriving)
@@ -133,6 +135,7 @@ namespace Script.Enemy
 
         private void Patrolling()
         {
+            _animator.SetBool(IsAttack,false);
             if (!_walkPointSet) SearchWalkPoint();
 
             if (_walkPointSet)
@@ -159,6 +162,7 @@ namespace Script.Enemy
 
         private void ChasePlayer()
         {
+            _animator.SetBool(IsAttack,false);
             agent.SetDestination(player.position);
             ScaredSprite(false);
             AlertSprite(true);
@@ -188,6 +192,10 @@ namespace Script.Enemy
                 {
                     timeDelayAtk = timeDelayBfAttacks;
                     PlayerLocomotion.Instance.isStunt = true;
+                    if (isDoDamage)
+                    {
+                        PlayerManager.Instance.OnTakeDamage(100);
+                    }
                     //End of attack code
 
                     _alreadyAttacked = true;
@@ -198,6 +206,7 @@ namespace Script.Enemy
 
         private void Flee()
         {
+            _animator.SetBool(IsAttack,false);
             if (!_walkPointSet) SearchWalkPoint();
             if (_walkPointSet) agent.SetDestination(walkPoint);
             Vector3 distanceToWalkPoint = transform.position - walkPoint;
@@ -209,7 +218,6 @@ namespace Script.Enemy
         private void ResetAttack()
         {
             _alreadyAttacked = false;
-            _animator.SetBool(IsAttack,false);
         }
 
         private void OnDrawGizmosSelected()

@@ -13,7 +13,7 @@ public class FloodSystem : MonoBehaviour
     public GameObject water;
     public GameObject playerObj;
     private Vector3 _playerPos;
-    public bool fatLumpClear;
+    //public bool fatLumpClear;
     [FormerlySerializedAs("ReduseDuration")] [SerializeField] private float reduceDuration = 1f;
     public float reduceIntensity = 0.3f;
     [SerializeField] private float fullReduceRate = 0.8f;
@@ -42,11 +42,11 @@ public class FloodSystem : MonoBehaviour
 
     private void Update()
     {
-        if (fatLumpClear)
+        /*if (fatLumpClear)
         {
             StartCoroutine(FloodReduce(reduceDuration));
             fatLumpClear = false;
-        }
+        }*/
     }
 
     private void FixedUpdate()
@@ -89,11 +89,11 @@ public class FloodSystem : MonoBehaviour
         }
     }
 
-    private IEnumerator FloodReduce (float duration)
+    public IEnumerator FloodReduce ()
     {
         float elapsedTime = 0f;
         floodMulti -= cloggedFloodRate*manholeNum*fullReduceRate;
-        while (elapsedTime < duration && floodPoint > 0)
+        while (elapsedTime < reduceDuration && floodPoint > 0)
         {
             elapsedTime += Time.deltaTime;
             floodPoint -= reduceIntensity+reduceIntensity*(floodMulti / floodUiCalculate);

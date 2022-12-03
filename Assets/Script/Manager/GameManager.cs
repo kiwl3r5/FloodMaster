@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using Script.Player;
 using UnityEngine;
@@ -11,19 +10,21 @@ namespace Script.Manager
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance { get; private set; }
+        public OptionsManager optionsManager;
+        public ScoreManager scoreManager;
 
         [Header("GameStatus")]
         public bool gameIsPause;
         public bool gameIsWin;
         public bool gameIsLose;
         public bool isWinUnlock;
+        public bool isLoading;
         public float maxKarma = 100;
         [FormerlySerializedAs("sumCollected")] public float sumKarmaPoints;
         public int sceneNum;
-        [SerializeField] private float scoreMax = 10000;
-        [SerializeField] private float curScore;
+        //[SerializeField] private float curScore;
         public float totalPlaytime;
-        public string roundedScore;
+        //public string roundedScore;
         public float endLvDistance;
 
         [Header("UI")]
@@ -38,6 +39,7 @@ namespace Script.Manager
         [FormerlySerializedAs("invincUI")] public GameObject invincibleUI;
         public GameObject takeDmgUI;
         public Text scoreText;
+        public Text rawScoreText;
         public Text realTimeScoreText;
         public Text totalPlayTimeText;
         public Image collectedBarUI;
@@ -51,6 +53,8 @@ namespace Script.Manager
         public GameObject minimapUI;
         public Slider minimapProgress;
         public Button[] restartButtons;
+        public Button optionsButton;
+        public GameObject optionsUI;
         public Button[] mainMenuButtons;
         public Button[] quitButtons;
         public Toggle floodStop;
@@ -79,12 +83,12 @@ namespace Script.Manager
             ButtonSetup(mainMenuButtons);
             ButtonSetup(quitButtons);
             nextLevelButton.onClick.AddListener(LoadLastLevel);
+            optionsButton.onClick.AddListener(OptionsUI);
             floodStop.onValueChanged.AddListener(delegate {FloodStopCheat(floodStop);});
             invincible.onValueChanged.AddListener(delegate {InvincibleCheat(invincible);});
             superJump.onValueChanged.AddListener(delegate {SuperJumpCheat(superJump);});
             floodLevel.onValueChanged.AddListener(delegate {FloodLevelCheat(floodLevel);});
             instantDownload.onClick.AddListener(InstantKarmaCheat);
-            curScore = scoreMax;
             sceneNum = SceneManager.GetActiveScene().buildIndex;
         }
 
@@ -94,6 +98,8 @@ namespace Script.Manager
             minimapProgress = minimapUI.GetComponent<Slider>();
             scoreText = scoreText.GetComponent<Text>();
             totalPlayTimeText = totalPlayTimeText.GetComponent<Text>();
+            optionsManager = GetComponent<OptionsManager>();
+            scoreManager = GetComponent<ScoreManager>(); 
             objectiveUI.gameObject.SetActive(sceneNum != 0);
             /*if (sceneNum != 0)
             {
@@ -109,9 +115,9 @@ namespace Script.Manager
             if (!gameIsPause&&sceneNum!=0)
             {
                 totalPlaytime += Time.deltaTime;
-                curScore -= Time.deltaTime;
-                roundedScore = curScore.ToString("0000");
+                //roundedScore = scoreManager.calScore.ToString("0000");
                 realTimeScoreText.text = TimeFormatter(totalPlaytime);
+                rawScoreText.text = $"Score: {scoreManager.rawScore}";
             }
 
             if (Input.GetKey(KeyCode.C)&&Input.GetKey(KeyCode.H)&&Input.GetKey(KeyCode.E)&&Input.GetKey(KeyCode.A)&&Input.GetKey(KeyCode.T))
@@ -191,9 +197,13 @@ namespace Script.Manager
         }
         #endregion //========================================================================================
         #region GameUI <========================================================================================
+        public void OptionsUI()
+        {
+            optionsUI.SetActive(true);
+        }
         private void PauseMenuInput()
         {
-            if (!Input.GetKeyDown(KeyCode.Escape) || gameIsWin || gameIsLose || sceneNum == 0) return;
+            if (!Input.GetKeyDown(KeyCode.Escape) || gameIsWin || gameIsLose || sceneNum == 0 || optionsUI.activeInHierarchy || GachaFatlump.Instance.isGachaUiOn) return;
             Pause_UI(!gameIsPause);
         }
         private void Pause_UI (bool check)
@@ -244,7 +254,7 @@ namespace Script.Manager
             {
                 case true:
                     PauseGame();
-                    scoreText.text = $"{roundedScore} point";
+                    scoreText.text = $"{scoreManager.calScore} points";
                     totalPlayTimeText.text = TimeFormatter(totalPlaytime);
                     break;
                 case false:
@@ -285,13 +295,13 @@ namespace Script.Manager
 
         #region SceneControl <===================================================================================
 
-        private void PauseGame()
+        public void PauseGame()
         {
             gameIsPause = true;
             Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0f;
         }
-        private void ResumeGame()
+        public void ResumeGame()
         {
             Time.timeScale = 1f;
             gameIsPause = false;
@@ -333,7 +343,7 @@ namespace Script.Manager
         private void ToMenu()
         {
             sceneNum = 0;
-            curScore = scoreMax;
+            scoreManager.rawScore = 0;
             totalPlaytime = 0;
             Pause_UI(false);
             GameWinUI(false);
@@ -362,6 +372,8 @@ namespace Script.Manager
             EmptyPool();
             StartCoroutine(LoadAsynchronously(sceneIndex));
             ResetCollectibleN();
+            scoreManager.ResetTimeScore();
+            totalPlaytime = 0;
         }
 
         private IEnumerator LoadAsynchronously(int sceneIndex)
@@ -370,11 +382,17 @@ namespace Script.Manager
             loadingScreen.gameObject.SetActive(true);
             while (!operation.isDone)
             {
+                isLoading = true;
                 float progress = Mathf.Clamp01((operation.progress / .9f));
                 loadingBarUI.fillAmount = progress;
                 yield return null;
             }
             loadingScreen.gameObject.SetActive(false);
+            isLoading = false;
+            if (sceneIndex>0)
+            {
+                StartCoroutine(optionsManager.CinemachineSetup());
+            }
         }
         public void NextScene()
         {
@@ -433,8 +451,8 @@ namespace Script.Manager
             var secondsRemainder = Mathf.Floor( (seconds % 60) * 100) / 100.0f;
             var minutes = ((int)(seconds / 60)) % 60;
             var hours = (int)(seconds / 3600);
-            return hours == 0 ? $"Total play time | {minutes:00} Min : {secondsRemainder:00} Sec" :
-                $"Total play time | {hours} hr : {minutes:00} Min : {secondsRemainder:00} Sec";
+            return hours == 0 ? $"Total time | {minutes:00} Min : {secondsRemainder:00} Sec" :
+                $"Total time | {hours} hr : {minutes:00} Min : {secondsRemainder:00} Sec";
         }
     }
 }

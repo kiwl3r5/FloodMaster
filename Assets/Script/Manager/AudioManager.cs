@@ -22,7 +22,7 @@ namespace Script.Manager
 			}
 		}
 
-		public AudioMixerGroup mixerGroup;
+		//public AudioMixerGroup mixerGroup;
 
 		public Sound[] sounds;
 
@@ -46,7 +46,7 @@ namespace Script.Manager
 				s.source.rolloffMode = s.rolloffMode;
 				s.source.maxDistance = s.maxDistance;
 
-				s.source.outputAudioMixerGroup = mixerGroup;
+				s.source.outputAudioMixerGroup = s.mixerGroup;
 			}
 		}
 

@@ -69,14 +69,16 @@ namespace Script
                 }
                 if (fatLumpHP<=0)
                 {
-                    FloodSystem.Instance.fatLumpClear = true;
+                    //FloodSystem.Instance.fatLumpClear = true;
                     isClear = true;
                     PlayerManager.Instance.stormDrainManager.isFatLumpClear = true;
                     PlayerManager.Instance.stormDrainManager.clearBonusTrigger = true;
                     PlayerManager.Instance.stormDrainManager.ClearCheckPrompt();
                     GameManager.Instance.sumKarmaPoints += 10f;
+                    ScoreManager.Instance.rawScore += 500;
                     GameManager.Instance.collectedBarUI.fillAmount = GameManager.Instance.sumKarmaPoints / GameManager.Instance.maxKarma;
                     gameObject.SetActive(false);
+                    GachaFatlump.Instance.StartGacha();
                 }
             }
             return false;

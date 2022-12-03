@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3083893563786768733
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3083893563786768735}
+  - component: {fileID: 3083893563786768734}
+  m_Layer: 0
+  m_Name: FloodObjectSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3083893563786768735
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3083893563786768733}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.5, y: 1, z: -0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3083893563786768734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3083893563786768733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb1fbdff6e6783947ac925ad1745aa04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floodObj:
+  - {fileID: 1231257164393027755, guid: 4120857e580c8974f8fa873c82e64f8b, type: 3}
+  - {fileID: 3440495346324920747, guid: 6d59349ecba7f1c49a0d9d9040d4914e, type: 3}
+  - {fileID: 4123640611109203694, guid: 16c78685f9f506e4ea9aaa97d6b890dd, type: 3}
+  - {fileID: 1631334166589043497, guid: 3503e518968448f4fbcd77d632474a92, type: 3}
+  - {fileID: 5278185993221128633, guid: 2d200e1e225a2c64e8a49ba086908caa, type: 3}
+  - {fileID: 3863150562670249723, guid: d475740b2f4439f45adab9b6ef07a6e5, type: 3}
+  - {fileID: 2474471913727453306, guid: 20c7c62bc39ee064896e309d89c1596c, type: 3}
+  - {fileID: 7306405364323293349, guid: be80459e4783db44bb36d84595e82b18, type: 3}
+  - {fileID: 3935657624874508694, guid: 7752d726ba2759946b89958d9aba4d8a, type: 3}
+  - {fileID: 2399125309053104905, guid: af0a72774d43d5e4a80ad2dbc4d515a3, type: 3}
+  - {fileID: 7752095892061014842, guid: 9f78c920b2fbeed4ab115e11d4dfc702, type: 3}
+  - {fileID: 5920087784330197852, guid: cdad39b56282632428f8e65dc890993c, type: 3}
+  - {fileID: 3443323957046584119, guid: a2f1f5fe47562f74388a7a5affd33c33, type: 3}
+  - {fileID: 8312147842198936372, guid: b5bc64dd8243fd84a922853c034899b1, type: 3}
+  - {fileID: 1106864167284210522, guid: 438e3ff2fda4db740b3d83c4c453731e, type: 3}
+  - {fileID: 8214024329761105231, guid: 57edb6155516f444988ee15c7318bb61, type: 3}
+  floodObjSpawnDelay: 4
+  spawnLocation: {x: 0, y: 0, z: 0}
+  playerDistance: 0
+  Lenght: 0

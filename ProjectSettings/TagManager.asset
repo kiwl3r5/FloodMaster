@@ -22,6 +22,8 @@ TagManager:
   - HpUI
   - HelperObj
   - NoSlowArea
+  - NPCEnd
+  - NPCEndL
   layers:
   - Default
   - TransparentFX

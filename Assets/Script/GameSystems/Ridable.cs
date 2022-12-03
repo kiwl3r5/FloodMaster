@@ -3,6 +3,7 @@ using Script.Player;
 using UnityEngine;
 using MidniteOilSoftware;
 using Script.Manager;
+using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
 namespace Script.GameSystems
@@ -16,6 +17,11 @@ namespace Script.GameSystems
         [SerializeField] private CapsuleCollider PlayerCollider;
         //[SerializeField] private Transform defaultPlayerTransform;
         [SerializeField] private bool isDriving;
+        
+        [Header("Skill")]
+        [SerializeField] private bool isThisSkill;
+        [SerializeField] private float consumeRate;
+        [SerializeField] private GameObject smokeFx;
 
         private Camera _cameraObj;
         [SerializeField]private Vector3 _moveDirection;
@@ -40,27 +46,60 @@ namespace Script.GameSystems
             //defaultPlayerTransform = Player.transform;
             PlayerCollider = Player.GetComponent<CapsuleCollider>();
         }
-        
+
         private void FixedUpdate()
         {
-            floodLevelThrust = FloodSystem.Instance.FloodLvThrust();
             if (GameManager.Instance.isEmptyPool)
             {
                 ObjectPoolManager.DespawnGameObject(gameObject);
                 ObjectPoolManager.EmptyPool();
+                return;
             }
+            floodLevelThrust = FloodSystem.Instance.FloodLvThrust();
             rb.AddForce(0,0,waterThrust*floodLevelThrust);
-            maxDuration -= Time.deltaTime;
-            if (maxDuration <= 0)
+            if (!isThisSkill)
             {
-                Driving(false);
-                ObjectPoolManager.DespawnGameObject(gameObject);
-                maxDuration = _defaultMaxDuration;
-                _isRidden = false;
+                maxDuration -= Time.deltaTime;
+                if (maxDuration <= 0)
+                {
+                    Driving(false);
+                    ObjectPoolManager.DespawnGameObject(gameObject);
+                    maxDuration = _defaultMaxDuration;
+                    _isRidden = false;
+                }
             }
             if (!isDriving) return;
+            if (isThisSkill)
+            {
+                if (GameManager.Instance.sumKarmaPoints < consumeRate)
+                {
+                    return;
+                }
+
+                GameManager.Instance.sumKarmaPoints -= consumeRate;
+                GameManager.Instance.collectedBarUI.fillAmount =
+                    GameManager.Instance.sumKarmaPoints / GameManager.Instance.maxKarma;
+            }
             HandleMovement();
             HandleRotation();
+        }
+        
+        private void OnEnable()
+        {
+            if (isThisSkill)
+            {
+                smokeFx.SetActive(true);
+                SkillSystem.Instance.isSkillActive = true;
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (isThisSkill)
+            { 
+                //smokeFx.SetActive(false);
+                SkillSystem.Instance.isSkillActive = false;
+            }
         }
 
         private void Update()
@@ -70,6 +109,10 @@ namespace Script.GameSystems
                 var o = gameObject;
                 Player.transform.position = o.transform.position;
                 Player.transform.rotation = o.transform.rotation;
+            }
+            if (Keyboard.current.rKey.wasPressedThisFrame && isThisSkill && !isDriving)
+            {
+                ObjectPoolManager.DespawnGameObject(gameObject);
             }
         }
 
@@ -81,6 +124,10 @@ namespace Script.GameSystems
             PlayerCollider.enabled = !driving;
             this.isDriving = driving;
             AnimatorManager.Instance.animator.SetBool(IsDriving,driving);
+            if (driving)
+            {
+                AnimatorManager.Instance.PlayTargetAnimation("LayingSit",true,0f);
+            }
         }
         
         private void HandleMovement()
@@ -153,8 +200,7 @@ namespace Script.GameSystems
             if (!isDriving)
             {
                 Driving(true);
-                AnimatorManager.Instance.PlayTargetAnimation("LayingSit",true,0f);
-                if (!_isRidden)
+                if (!_isRidden && !isThisSkill)
                 {
                     maxDuration = _rideMaxDuration;
                 }
@@ -162,6 +208,10 @@ namespace Script.GameSystems
                 return true;
             }
             Driving(false);
+            if (isThisSkill)
+            {
+                ObjectPoolManager.DespawnGameObject(gameObject);
+            }
             return false;
         }
 

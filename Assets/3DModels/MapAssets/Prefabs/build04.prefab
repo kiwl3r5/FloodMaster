@@ -53,7 +53,7 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.06839384
+  - screenRelativeHeight: 0.08854023
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1513550967984266125}
@@ -329,6 +329,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1993572262896635392}
     m_Modifications:
+    - target: {fileID: -7357585723720440415, guid: 55d54a07aebabb340b8421cea0cbaef2,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 439973152356160976, guid: 55d54a07aebabb340b8421cea0cbaef2,
         type: 3}
       propertyPath: m_RootOrder

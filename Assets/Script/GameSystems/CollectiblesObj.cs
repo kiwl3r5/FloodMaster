@@ -11,6 +11,7 @@ public class CollectiblesObj : MonoBehaviour
     //public GameManager gm;
     public GameObject pickupWifi;
     public float maxDuration = 300;
+    [SerializeField] private float karmaPoint = 1;
     private float _defaultDuration;
     //public float cloggedFloodRate = 0.02f;
     [FormerlySerializedAs("despawnRange")] public float deSpawnRange;
@@ -31,6 +32,12 @@ public class CollectiblesObj : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameManager.Instance.isEmptyPool)
+        {
+            ObjectPoolManager.DespawnGameObject(gameObject);
+            ObjectPoolManager.EmptyPool();
+            return;
+        }
         _stormDrainManager = objP.stormDrainManager;
         isInDeSpawnRange = Physics.CheckSphere(transform.position, deSpawnRange, objP.whatIsManhole);
         if (objP.numFound>0)
@@ -53,11 +60,6 @@ public class CollectiblesObj : MonoBehaviour
             ObjectPoolManager.DespawnGameObject(gameObject);
             maxDuration = _defaultDuration;
         }
-        if (GameManager.Instance.isEmptyPool)
-        {
-            DeSpawnObj();
-            ObjectPoolManager.EmptyPool();
-        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -68,7 +70,8 @@ public class CollectiblesObj : MonoBehaviour
             AudioManager.Instance.Play("Wifi");
             ObjectPoolManager.DespawnGameObject(gameObject);
             //Destroy(gameObject);
-            GameManager.Instance.sumKarmaPoints++;
+            GameManager.Instance.sumKarmaPoints += karmaPoint;
+            ScoreManager.Instance.rawScore += 100*karmaPoint;
             //GameManager.Instance.collectible--;
             GameManager.Instance.ReloadKarmaUI();
             maxDuration = _defaultDuration;

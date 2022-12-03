@@ -17,7 +17,7 @@ public class TransformOnWater : MonoBehaviour
     {
         if (FloodSystem.Instance.floodPoint>20)
         {
-            transform.position = new Vector3(transform.parent.position.x, water.transform.position.y-0.05f,transform.parent.position.z);   
+            transform.position = new Vector3(transform.parent.position.x, water.transform.position.y,transform.parent.position.z);   
         }
         else
         {

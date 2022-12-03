@@ -1,6 +1,4 @@
-using System;
 using Script.Manager;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Script.Player
@@ -10,7 +8,7 @@ namespace Script.Player
         private PlayerManager _playerManager;
         private AnimatorManager _animatorManager;
         private InputManager _inputManager;
-        [SerializeField]private Vector3 _moveDirection;
+        [SerializeField] private Vector3 _moveDirection;
         private Camera _cameraObj;
         public Rigidbody playerRigidbody;
 
@@ -259,6 +257,7 @@ namespace Script.Player
             var playerPosition = transform.position;
             var targetLookRotation = Quaternion.LookRotation(target - playerPosition);
             targetLookRotation.x = 0;
+            targetLookRotation.z = 0;
             transform.rotation = targetLookRotation;
         }
 

@@ -200,6 +200,7 @@ public class StormDrainManager : MonoBehaviour, IInteractable
         if (currentCapacity>0)
         {
             currentCapacity--;
+            ScoreManager.Instance.rawScore += 100;
             GameManager.Instance.sumKarmaPoints++;
             GameManager.Instance.collectedBarUI.fillAmount = GameManager.Instance.sumKarmaPoints / GameManager.Instance.maxKarma;
             FloodSystem.Instance.floodMulti -= FloodSystem.Instance.cloggedFloodRate;

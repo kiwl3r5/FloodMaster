@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888296378403088277}
-  m_LocalRotation: {x: -0, y: 0.7070911, z: -0, w: 0.7071225}
+  m_LocalRotation: {x: 0, y: 0.70708823, z: 0, w: 0.7071253}
   m_LocalPosition: {x: 0, y: 0, z: -20}
   m_LocalScale: {x: 1.4, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -157,10 +157,10 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   colorGradientTexture: {fileID: 2800000, guid: 312dff2e486f35544902e34e75ad8604,
     type: 3}
-  shallowColor: {r: 0.2923215, g: 0.28756756, b: 0.28266504, a: 0.15686275}
+  shallowColor: {r: 0.2922129, g: 0.28745896, b: 0.28255644, a: 0.15686275}
   deepColor: {r: 0.7075471, g: 0.5838714, b: 0.45723563, a: 0.78431374}
   colorDepth: 0.59
-  horizonColor: {r: 0.33932364, g: 0.32210222, b: 0.27043793, a: 1}
+  horizonColor: {r: 0.33921504, g: 0.32199362, b: 0.27032933, a: 1}
   horizonDistance: 16.73
   shoreFade: 1
   shoreColor: {r: 0.5772516, g: 0.8679245, b: 0.81829745, a: 0}

@@ -56,11 +56,12 @@ MonoBehaviour:
     rolloffMode: 0
     maxDistance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7020373309423943729, guid: 429c90560a449d44480efccfc0f509ad,
+      type: 2}
     source: {fileID: 0}
   - name: Theme1
     clip: {fileID: 8300000, guid: f4f74b37ccc8a1a429383521f41dedb0, type: 3}
-    volume: 0
+    volume: 0.206
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -68,7 +69,8 @@ MonoBehaviour:
     rolloffMode: 0
     maxDistance: 0
     loop: 1
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: -6734462990762653286, guid: 429c90560a449d44480efccfc0f509ad,
+      type: 2}
     source: {fileID: 0}
   - name: Powerup
     clip: {fileID: 8300000, guid: c8b30adeb00c6b24bb8d4c0d23bbabdd, type: 3}
@@ -80,7 +82,8 @@ MonoBehaviour:
     rolloffMode: 0
     maxDistance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7020373309423943729, guid: 429c90560a449d44480efccfc0f509ad,
+      type: 2}
     source: {fileID: 0}
   - name: Alert
     clip: {fileID: 8300000, guid: ba35cc500c92c8944b0b031324680fcc, type: 3}
@@ -92,7 +95,8 @@ MonoBehaviour:
     rolloffMode: 0
     maxDistance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7020373309423943729, guid: 429c90560a449d44480efccfc0f509ad,
+      type: 2}
     source: {fileID: 0}
   - name: Wifi
     clip: {fileID: 8300000, guid: 474ed3f1cea185f4185d71fed10a97fb, type: 3}
@@ -104,5 +108,6 @@ MonoBehaviour:
     rolloffMode: 0
     maxDistance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7020373309423943729, guid: 429c90560a449d44480efccfc0f509ad,
+      type: 2}
     source: {fileID: 0}
