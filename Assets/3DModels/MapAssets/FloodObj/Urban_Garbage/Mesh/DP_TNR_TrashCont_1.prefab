@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4645970395589771335}
   - component: {fileID: 6416457730344432983}
   - component: {fileID: 215391736486003415}
+  - component: {fileID: -1643670470735707777}
   m_Layer: 0
   m_Name: DP_TNR_TrashCont_1
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-1643670470735707777
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8016198694221245448}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7522013812426659041, guid: 0d91948d1f95e4f429abc761210507d0, type: 3}
