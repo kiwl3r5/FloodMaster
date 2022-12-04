@@ -13,7 +13,7 @@ namespace Script.Manager
         public TMPro.TextMeshProUGUI myName;
         private float _defaultTimeScoreDuration;
         private float _defaultMaxTimeScore;
-        public float rawScore;
+        //public float rawScore;
         public Text bestScoreText;
         public int calScore;
         [SerializeField] private HighScores _highScores;
@@ -60,7 +60,7 @@ namespace Script.Manager
 
         public float ScoreCalculator()
         {
-            var outScore = rawScore + maxTimeScore;
+            var outScore = GameManager.Instance.rawScore + maxTimeScore;
             return outScore;
         }
 

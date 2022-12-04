@@ -63,7 +63,7 @@ public class EnemyManager : MonoBehaviour,IInteractable
         if (healthPoint>0)
         {
             healthPoint -= damageReceived;
-            ScoreManager.Instance.rawScore += 20;
+            GameManager.Instance.rawScore += 20;
             PlayerLocomotion.Instance.LookAtTarget(transform.position);
             if (!PlayerManager.Instance.isInteracting)
             {

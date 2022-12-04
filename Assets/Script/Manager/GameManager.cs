@@ -21,6 +21,7 @@ namespace Script.Manager
         public bool isLoading;
         public float maxKarma = 100;
         [FormerlySerializedAs("sumCollected")] public float sumKarmaPoints;
+        public float rawScore;
         public int sceneNum;
         //[SerializeField] private float curScore;
         public float totalPlaytime;
@@ -28,6 +29,7 @@ namespace Script.Manager
         public float endLvDistance;
 
         [Header("UI")]
+        public GameObject scoreUi;
         public GameObject deadUI;
         public GameObject pauseUI;
         public GameObject cheatUI;
@@ -37,7 +39,7 @@ namespace Script.Manager
         public GameObject winUI;
         public GameObject speedUpUI;
         [FormerlySerializedAs("invincUI")] public GameObject invincibleUI;
-        public GameObject takeDmgUI;
+        //public GameObject takeDmgUI;
         public Text scoreText;
         public Text rawScoreText;
         public Text realTimeScoreText;
@@ -117,7 +119,12 @@ namespace Script.Manager
                 totalPlaytime += Time.deltaTime;
                 //roundedScore = scoreManager.calScore.ToString("0000");
                 realTimeScoreText.text = TimeFormatter(totalPlaytime);
-                rawScoreText.text = $"Score: {scoreManager.rawScore}";
+                rawScoreText.text = $"Score: {rawScore}";
+            }
+
+            if (sceneNum==0)
+            {
+                rawScoreText.text = "";
             }
 
             if (Input.GetKey(KeyCode.C)&&Input.GetKey(KeyCode.H)&&Input.GetKey(KeyCode.E)&&Input.GetKey(KeyCode.A)&&Input.GetKey(KeyCode.T))
@@ -281,7 +288,7 @@ namespace Script.Manager
         
         public void TakeDmgUI(bool check)
         {
-            takeDmgUI.SetActive(check);
+            //takeDmgUI.SetActive(check);
         }
         public void FloodUI(bool check)
         {
@@ -343,7 +350,7 @@ namespace Script.Manager
         private void ToMenu()
         {
             sceneNum = 0;
-            scoreManager.rawScore = 0;
+            rawScore = 0;
             totalPlaytime = 0;
             Pause_UI(false);
             GameWinUI(false);
@@ -374,6 +381,7 @@ namespace Script.Manager
             ResetCollectibleN();
             scoreManager.ResetTimeScore();
             totalPlaytime = 0;
+            rawScore = 0;
         }
 
         private IEnumerator LoadAsynchronously(int sceneIndex)

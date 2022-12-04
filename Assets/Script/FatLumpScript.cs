@@ -75,10 +75,11 @@ namespace Script
                     PlayerManager.Instance.stormDrainManager.clearBonusTrigger = true;
                     PlayerManager.Instance.stormDrainManager.ClearCheckPrompt();
                     GameManager.Instance.sumKarmaPoints += 10f;
-                    ScoreManager.Instance.rawScore += 500;
+                    GameManager.Instance.rawScore += 500;
                     GameManager.Instance.collectedBarUI.fillAmount = GameManager.Instance.sumKarmaPoints / GameManager.Instance.maxKarma;
                     gameObject.SetActive(false);
                     GachaFatlump.Instance.StartGacha();
+                    AudioManager.Instance.Play("Eggplotion");
                 }
             }
             return false;

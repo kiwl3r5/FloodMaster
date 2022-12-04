@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 9040080635542413800}
   - component: {fileID: 420518474318220251}
   - component: {fileID: -5235765321264007903}
+  - component: {fileID: 4587531741863478017}
   m_Layer: 8
   m_Name: Trash_M
   m_TagString: Collectable
@@ -232,11 +233,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0
-  outlineColor: {r: 0.5475848, g: 1, b: 0.13679248, a: 1}
-  outlineWidth: 2.2
+  outlineColor: {r: 1, g: 0.84155977, b: 0.1372549, a: 1}
+  outlineWidth: 2.75
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!65 &4587531741863478017
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9040080635542413808}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.45, y: 0.33, z: 0.55}
+  m_Center: {x: -0.009255603, y: 0.011320673, z: -0.0226214}
 --- !u!1 &9040080636973651810
 GameObject:
   m_ObjectHideFlags: 0

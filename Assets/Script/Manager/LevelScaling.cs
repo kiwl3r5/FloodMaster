@@ -7,13 +7,14 @@ public class LevelScaling : MonoBehaviour
 {
     public int levelScale = 1;
     [SerializeField] private float floodPercentage;
-    [SerializeField] private float mapPercentage;
+    public float mapPercentage;
 
     private static LevelScaling _instance;
     public static LevelScaling Instance { get { return _instance; } }
 
     private void Awake()
     {
+        mapPercentage = GameManager.Instance.minimapProgress.value / GameManager.Instance.minimapProgress.maxValue*100;
         _instance = this;
     }
 

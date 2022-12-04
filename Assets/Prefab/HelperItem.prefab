@@ -111,12 +111,11 @@ MonoBehaviour:
   PlayerCollider: {fileID: 0}
   isDriving: 0
   isThisSkill: 0
-  isSkillSr: 0
-  isSkillR: 0
-  isSkillN: 0
+  consumeRate: 0
+  smokeFx: {fileID: 0}
   _moveDirection: {x: 0, y: 0, z: 0}
   waterThrust: 6
-  moveThrust: 10
+  moveThrust: 6
   maxDuration: 300
   _rideMaxDuration: 25
   _isRidden: 0

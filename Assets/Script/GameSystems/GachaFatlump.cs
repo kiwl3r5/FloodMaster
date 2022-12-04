@@ -23,6 +23,7 @@ public class GachaFatlump : MonoBehaviour
    [SerializeField] private Button slot2Button;
    [SerializeField] private GameObject[] bgSlot2;
    public bool isGachaUiOn;
+   public bool isSupply;
 
    private SkillSystem _skillSystem;
    
@@ -37,9 +38,9 @@ public class GachaFatlump : MonoBehaviour
 
    private void Update()
    {
-      if (Keyboard.current.pKey.wasPressedThisFrame)
+      if (Keyboard.current.pKey.wasPressedThisFrame && GameManager.Instance.cheatUI.activeInHierarchy)
       {
-         StartCoroutine(GachaSlot());
+         StartSupplyGacha();
       }
       if (gachaUi.activeInHierarchy)
       {
@@ -53,11 +54,17 @@ public class GachaFatlump : MonoBehaviour
 
    public void StartGacha()
    {
-      StartCoroutine(GachaSlot());
+      StartCoroutine(GachaSlot(false));
+   }
+   
+   public void StartSupplyGacha()
+   {
+      StartCoroutine(GachaSlot(true));
    }
 
-   public IEnumerator GachaSlot()
+   public IEnumerator GachaSlot(bool isSupply)
    {
+      this.isSupply = isSupply;
       gachaUi.SetActive(true);
       GameManager.Instance.PauseGame();
       int ranChanceSlot1 = Random.Range(1, 5);
@@ -228,12 +235,20 @@ public class GachaFatlump : MonoBehaviour
          GameManager.Instance.collectedBarUI.fillAmount = GameManager.Instance.sumKarmaPoints / GameManager.Instance.maxKarma;
          gachaUi.SetActive(false);
          GameManager.Instance.ResumeGame();
+         if (!isSupply)
+         {
+            StartCoroutine(FloodSystem.Instance.FloodReduce());
+         }
          return;
       }
       GameManager.Instance.sumKarmaPoints += 30;
       GameManager.Instance.collectedBarUI.fillAmount = GameManager.Instance.sumKarmaPoints / GameManager.Instance.maxKarma;
       gachaUi.SetActive(false);
       GameManager.Instance.ResumeGame();
+      if (!isSupply)
+      {
+         StartCoroutine(FloodSystem.Instance.FloodReduce());
+      }
    }
    
    private void ReduceFloodLevel()
@@ -241,6 +256,10 @@ public class GachaFatlump : MonoBehaviour
       FloodSystem.Instance.floodPoint *= 0.8f;
       gachaUi.SetActive(false);
       GameManager.Instance.ResumeGame();
+      if (!isSupply)
+      {
+         StartCoroutine(FloodSystem.Instance.FloodReduce());
+      }
    }
 
    private void ReduceFloodRate()
@@ -255,7 +274,10 @@ public class GachaFatlump : MonoBehaviour
       FloodSystem.Instance.floodMulti -= FloodSystem.Instance.floodUiCalculate/100*5;
       gachaUi.SetActive(false);
       GameManager.Instance.ResumeGame();
-      StartCoroutine(FloodSystem.Instance.FloodReduce());
+      if (!isSupply)
+      {
+         StartCoroutine(FloodSystem.Instance.FloodReduce());
+      }
    }
 
    private void FreeFloodBootsSkill()
@@ -263,7 +285,10 @@ public class GachaFatlump : MonoBehaviour
       StartCoroutine(_skillSystem.FloodBoots());
       gachaUi.SetActive(false);
       GameManager.Instance.ResumeGame();
-      StartCoroutine(FloodSystem.Instance.FloodReduce());
+      if (!isSupply)
+      {
+         StartCoroutine(FloodSystem.Instance.FloodReduce());
+      }
    }
 
    private void FreeScareEnemySkill()
@@ -271,7 +296,10 @@ public class GachaFatlump : MonoBehaviour
       StartCoroutine(_skillSystem.ScareEnemy());
       gachaUi.SetActive(false);
       GameManager.Instance.ResumeGame();
-      StartCoroutine(FloodSystem.Instance.FloodReduce());
+      if (!isSupply)
+      {
+         StartCoroutine(FloodSystem.Instance.FloodReduce());
+      }
    }
 
    private void BoatSkillN()
@@ -280,7 +308,10 @@ public class GachaFatlump : MonoBehaviour
       _skillSystem.BoatSkillIconChanger(1);
       gachaUi.SetActive(false);
       GameManager.Instance.ResumeGame();
-      StartCoroutine(FloodSystem.Instance.FloodReduce());
+      if (!isSupply)
+      {
+         StartCoroutine(FloodSystem.Instance.FloodReduce());
+      }
    }
    private void BoatSkillR()
    {
@@ -288,7 +319,10 @@ public class GachaFatlump : MonoBehaviour
       _skillSystem.BoatSkillIconChanger(2);
       gachaUi.SetActive(false);
       GameManager.Instance.ResumeGame();
-      StartCoroutine(FloodSystem.Instance.FloodReduce());
+      if (!isSupply)
+      {
+         StartCoroutine(FloodSystem.Instance.FloodReduce());
+      }
    }
    private void BoatSkillSR()
    {
@@ -296,6 +330,9 @@ public class GachaFatlump : MonoBehaviour
       _skillSystem.BoatSkillIconChanger(3);
       gachaUi.SetActive(false);
       GameManager.Instance.ResumeGame();
-      StartCoroutine(FloodSystem.Instance.FloodReduce());
+      if (!isSupply)
+      {
+         StartCoroutine(FloodSystem.Instance.FloodReduce());
+      }
    }
 }

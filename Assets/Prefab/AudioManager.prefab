@@ -44,11 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e88e0352027a79498260e699c2edb17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixerGroup: {fileID: 0}
   sounds:
   - name: Eggplotion
     clip: {fileID: 8300000, guid: 3f067c18d9f79854c87f9eafcffc0010, type: 3}
-    volume: 0.2
+    volume: 0.219
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0.17
@@ -60,7 +59,7 @@ MonoBehaviour:
       type: 2}
     source: {fileID: 0}
   - name: Theme1
-    clip: {fileID: 8300000, guid: f4f74b37ccc8a1a429383521f41dedb0, type: 3}
+    clip: {fileID: 8300000, guid: 9328066ba5888ec47896c1d01990bcd7, type: 3}
     volume: 0.206
     volumeVariance: 0
     pitch: 1
@@ -108,6 +107,45 @@ MonoBehaviour:
     rolloffMode: 0
     maxDistance: 0
     loop: 0
+    mixerGroup: {fileID: 7020373309423943729, guid: 429c90560a449d44480efccfc0f509ad,
+      type: 2}
+    source: {fileID: 0}
+  - name: Splash
+    clip: {fileID: 8300000, guid: cf029bb2b77f37643b1b1307e46e3508, type: 3}
+    volume: 0.4
+    volumeVariance: 0.15
+    pitch: 1
+    pitchVariance: 0.094
+    spatialBlend: 0
+    rolloffMode: 0
+    maxDistance: 0
+    loop: 0
+    mixerGroup: {fileID: 7020373309423943729, guid: 429c90560a449d44480efccfc0f509ad,
+      type: 2}
+    source: {fileID: 0}
+  - name: SpeedBoat
+    clip: {fileID: 8300000, guid: f78b1273d8df2ce4eb25a86572d9cd8f, type: 3}
+    volume: 0.4
+    volumeVariance: 0.15
+    pitch: 1
+    pitchVariance: 0.094
+    spatialBlend: 0
+    rolloffMode: 0
+    maxDistance: 0
+    loop: 1
+    mixerGroup: {fileID: 7020373309423943729, guid: 429c90560a449d44480efccfc0f509ad,
+      type: 2}
+    source: {fileID: 0}
+  - name: Boat
+    clip: {fileID: 8300000, guid: 52610f23ffe107a4589bc03751c78c19, type: 3}
+    volume: 0.4
+    volumeVariance: 0.15
+    pitch: 1
+    pitchVariance: 0.094
+    spatialBlend: 0
+    rolloffMode: 0
+    maxDistance: 0
+    loop: 1
     mixerGroup: {fileID: 7020373309423943729, guid: 429c90560a449d44480efccfc0f509ad,
       type: 2}
     source: {fileID: 0}

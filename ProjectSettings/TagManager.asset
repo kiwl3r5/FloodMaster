@@ -24,6 +24,7 @@ TagManager:
   - NoSlowArea
   - NPCEnd
   - NPCEndL
+  - BoatSkill
   layers:
   - Default
   - TransparentFX

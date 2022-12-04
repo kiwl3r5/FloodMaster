@@ -121,8 +121,21 @@ public class StormDrainManager : MonoBehaviour, IInteractable
     {
         if (other.CompareTag("HelperObj"))
         {
-            if (currentCapacity>0)
+            if (currentCapacity>0 && PlayerLocomotion.Instance.isDriving)
             {
+                //ScoreManager.Instance.rawScore += 100*currentCapacity;
+                GameManager.Instance.sumKarmaPoints += currentCapacity;
+                GameManager.Instance.collectedBarUI.fillAmount = GameManager.Instance.sumKarmaPoints / GameManager.Instance.maxKarma;
+                FloodSystem.Instance.floodMulti -= FloodSystem.Instance.cloggedFloodRate*currentCapacity;
+                currentCapacity = 0;
+                CloggedTrashSize();
+            }
+        }
+        if (other.CompareTag("BoatSkill"))
+        {
+            if (currentCapacity>0 && PlayerLocomotion.Instance.isDriving) //BoatSkill
+            {
+                GameManager.Instance.rawScore += 100*currentCapacity;
                 GameManager.Instance.sumKarmaPoints += currentCapacity;
                 GameManager.Instance.collectedBarUI.fillAmount = GameManager.Instance.sumKarmaPoints / GameManager.Instance.maxKarma;
                 FloodSystem.Instance.floodMulti -= FloodSystem.Instance.cloggedFloodRate*currentCapacity;
@@ -200,7 +213,7 @@ public class StormDrainManager : MonoBehaviour, IInteractable
         if (currentCapacity>0)
         {
             currentCapacity--;
-            ScoreManager.Instance.rawScore += 100;
+            GameManager.Instance.rawScore += 100;
             GameManager.Instance.sumKarmaPoints++;
             GameManager.Instance.collectedBarUI.fillAmount = GameManager.Instance.sumKarmaPoints / GameManager.Instance.maxKarma;
             FloodSystem.Instance.floodMulti -= FloodSystem.Instance.cloggedFloodRate;

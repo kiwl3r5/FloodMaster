@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using MidniteOilSoftware;
 using Script.Manager;
+using Script.Player;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -71,7 +72,7 @@ public class CollectiblesObj : MonoBehaviour
             ObjectPoolManager.DespawnGameObject(gameObject);
             //Destroy(gameObject);
             GameManager.Instance.sumKarmaPoints += karmaPoint;
-            ScoreManager.Instance.rawScore += 100*karmaPoint;
+            GameManager.Instance.rawScore += 100*karmaPoint;
             //GameManager.Instance.collectible--;
             GameManager.Instance.ReloadKarmaUI();
             maxDuration = _defaultDuration;
@@ -83,6 +84,20 @@ public class CollectiblesObj : MonoBehaviour
             ObjectPoolManager.DespawnGameObject(gameObject);
             maxDuration = _defaultDuration;
             //isManholeFull = true;
+        }
+        
+        if (other.CompareTag("BoatSkill"))
+        {
+            if (PlayerLocomotion.Instance.isDriving) //BoatSkill
+            {
+                Instantiate(pickupWifi, transform.position, transform.rotation);
+                GameManager.Instance.rawScore += 100;
+                GameManager.Instance.sumKarmaPoints ++;
+                GameManager.Instance.collectedBarUI.fillAmount = GameManager.Instance.sumKarmaPoints / GameManager.Instance.maxKarma;
+                AudioManager.Instance.Play("Wifi");
+                ObjectPoolManager.DespawnGameObject(gameObject);
+                maxDuration = _defaultDuration;
+            }
         }
         
         /*if (other.CompareTag("manholeRad"))

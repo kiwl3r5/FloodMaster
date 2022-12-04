@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 3862415662839682924}
   - component: {fileID: 3862415662839682933}
   - component: {fileID: 5565082132191673670}
+  - component: {fileID: 1889165531232558570}
   m_Layer: 8
   m_Name: Trash
   m_TagString: Collectable
@@ -270,6 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupWifi: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3, type: 3}
   maxDuration: 300
+  karmaPoint: 1
   deSpawnRange: 0.56
   isInDeSpawnRange: 0
   isManholeFull: 1
@@ -341,3 +343,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2811874449698347954, guid: 824d8ab9e41cf2648b990c15c286f4b3, type: 3}
+--- !u!65 &1889165531232558570
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3862415662839682925}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.38205498, y: 0.11975992, z: 0.41206574}
+  m_Center: {x: -0.0100687295, y: -0.0029013231, z: 0.011617489}

@@ -6,17 +6,57 @@
   <component name="ChangeListManager">
     <list default="true" id="fb1edc33-db92-4ff5-a6b9-9bffbaf053c5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FloodMaster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FloodMaster/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ImportedAssets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ImportedAssets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3DModels/Box.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3DModels/Box.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3DModels/MapAssets/DLprops/Models/food cart.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3DModels/MapAssets/DLprops/Models/food cart.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/Ghostrifter Official - Merry Bay.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/Ghostrifter Official - Merry Bay.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/HOME - Before The Night - 05 Above All.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/HOME - Before The Night - 05 Above All.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/Sunshower-home.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/Sunshower-home.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EnemyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/EnemyManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Alligator.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Alligator.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/AudioManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/AudioManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/BoatObstacle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/BoatObstacle.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Box.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Box.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/FishingBoat.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/FishingBoat.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/GameManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/GameManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/HelperItem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/HelperItem.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/MotorcycleObstacle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/MotorcycleObstacle.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Speedboat.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Speedboat.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/StormDrain.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/StormDrain.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Trash.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Trash.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Trash_L.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Trash_L.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Trash_M.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Trash_M.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Trash_S.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Trash_S.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/WoodenBoat.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/WoodenBoat.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Map01.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Map01.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/FatLumpScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/FatLumpScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/GameSystems/CollectiblesObj.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/GameSystems/CollectiblesObj.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/GameSystems/DialogueManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/GameSystems/DialogueManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/GameSystems/DialogueTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/GameSystems/DialogueTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/GameSystems/GachaFatlump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/GameSystems/GachaFatlump.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Manager/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/LevelScaling.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Manager/LevelScaling.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/ScoreManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Manager/ScoreManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/ScoreBoard/HighScores.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/ScoreBoard/HighScores.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/StormDrainManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/StormDrainManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Stylized Water For URP/Materials/Flood.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water For URP/Materials/Flood.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Stylized Water For URP/Materials/Windwaker.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water For URP/Materials/Windwaker.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/UI/ObjTive/ObjtProgress.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/UI/ObjTive/ObjtProgress.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/UI/ObjTive/ObjtProgressBg.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/UI/ObjTive/ObjtProgressBg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/UI/Options/OptionPanal.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/UI/Options/OptionPanal.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/UI/Skill/BoatSkillN.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/UI/Skill/BoatSkillN.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/UI/Skill/BoatSkillR.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/UI/Skill/BoatSkillR.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/UI/Skill/BoatSkillSR.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/UI/Skill/BoatSkillSR.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/UI/Stage/Stage1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/UI/Stage/Stage1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/UI/Stage/Stage2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/UI/Stage/Stage2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/UI/Stage/Stage3.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/UI/Stage/Stage3.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/UI/Stage/Stage4.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/UI/Stage/Stage4.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture/UI/Stage/StageInfo.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture/UI/Stage/StageInfo.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,11 +73,15 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/FloodFloatObjManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Helicopter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/NPCSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/CameraManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/GameSystems/GachaFatlump.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/GameSystems/Tutorial.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/MissionWaypoint.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/ScoreBoard/HighScores.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/StageAndSpUI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/SupplyDropBox.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.7/Runtime/UniversalRenderPipeline.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -162,6 +206,7 @@
       <workItem from="1670063988494" duration="5844000" />
       <workItem from="1670089612398" duration="25000" />
       <workItem from="1670089850449" duration="1814000" />
+      <workItem from="1670166106816" duration="293000" />
     </task>
     <servers />
   </component>

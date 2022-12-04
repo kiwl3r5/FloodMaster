@@ -40,13 +40,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6682359543373310687}
-  - component: {fileID: 6682359543373310656}
   - component: {fileID: 6682359543373310657}
   - component: {fileID: 6682359543373310658}
   - component: {fileID: 6682359543373310686}
+  - component: {fileID: 8354295371164289610}
   m_Layer: 13
   m_Name: WoodenBoat
-  m_TagString: HelperObj
+  m_TagString: BoatSkill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,20 +72,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &6682359543373310656
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6682359543373310659}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8675452379081041382, guid: 28013a1214aac5c43990e1c18c4b3223, type: 3}
 --- !u!54 &6682359543373310657
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -142,7 +128,7 @@ MonoBehaviour:
   PlayerCollider: {fileID: 0}
   isDriving: 0
   isThisSkill: 1
-  consumeRate: 0.1
+  consumeRate: 0.07
   smokeFx: {fileID: 7795900429624361305}
   _moveDirection: {x: 0, y: 0, z: 0}
   waterThrust: 6
@@ -155,6 +141,19 @@ MonoBehaviour:
   prompt: Ride
   fKeyEnable: 0
   prompt1: 
+--- !u!65 &8354295371164289610
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6682359543373310659}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.09, y: 0.75, z: 3.73}
+  m_Center: {x: 0, y: 0.21, z: 0}
 --- !u!1 &6682359543480245793
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,7 +261,7 @@ GameObject:
   - component: {fileID: 7834072404599159627}
   m_Layer: 0
   m_Name: boat
-  m_TagString: Untagged
+  m_TagString: BoatSkill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
